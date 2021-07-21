@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\SectionsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +23,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
-Route::middleware(['role:admin'])->prefix('admin')->group(function () {
+Route::middleware(['auth', 'verified', 'role:admin'])->prefix('admin')->group(function () {
     Route::get('/adminhome', [AdminController::class, 'adminhome'])->name('adminhome');
+    Route::get('/createSection', [SectionsController::class, 'createSection'])->name('createSection');
+    Route::post('/storeSection/section', [SectionsController::class, 'storeSection'])->name('storeSection');
 });
