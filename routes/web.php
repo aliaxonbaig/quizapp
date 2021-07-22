@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\SectionsController;
+use App\Http\Controllers\QuestionsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,4 +28,8 @@ Route::middleware(['auth', 'verified', 'role:admin'])->prefix('admin')->group(fu
     Route::get('/adminhome', [AdminController::class, 'adminhome'])->name('adminhome');
     Route::get('/createSection', [SectionsController::class, 'createSection'])->name('createSection');
     Route::post('/storeSection/section', [SectionsController::class, 'storeSection'])->name('storeSection');
+    Route::get('/listSection', [SectionsController::class, 'listSection'])->name('listSection');
+
+    Route::get('/createQuestion/{section}/create', [QuestionsController::class, 'createQuestion'])->name('createQuestion');
+    Route::post('/storeQuestion/{section}', [QuestionsController::class, 'storeQuestion'])->name('storeQuestion');
 });

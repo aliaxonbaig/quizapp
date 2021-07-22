@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Section;
 use Illuminate\Http\Request;
 
 class SectionsController extends Controller
@@ -19,5 +20,12 @@ class SectionsController extends Controller
         auth()->user()->sections()->createMany($data);
         $request->session()->flash('message', 'Section saved successfully!');
         return redirect()->back();
+    }
+
+    public function listSection()
+    {
+
+        $sections = Section::paginate(5);
+        return view('admins.list_sections', compact('sections'));
     }
 }

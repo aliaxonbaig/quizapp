@@ -1,15 +1,15 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Admin Home') }}
+            {{ __('Create Section') }}
         </h2>
     </x-slot>
     <div class="antialiased text-gray-900 px-6">
         <div class="max-w-xl mx-auto py-5 divide-y md:max-w-4xl">
             <div class="mx-auto bg-gray-100">
-                <h2 class="text-2xl font-bold card bg-green-600 p-4 text-gray-100 rounded-t-lg mx-auto">Solid</h2>
+                <h2 class="text-2xl font-bold card bg-green-600 p-4 text-gray-100 rounded-t-lg mx-auto">New Section</h2>
                 @if(Session::has('message'))
-                <h1 class="text-xs font-bold card bg-green-300 p-2 -mb-2 text-green-50">
+                <h1 class="text-xs font-bold card bg-green-400 p-2 -mb-2 text-green-50">
                     {{session::get('message')}}
                 </h1>
                 @endif
@@ -49,7 +49,7 @@
                                 <textarea name="section[details]" value="{{ old('section.details') }}" class="mt-1 bg-gray-100 block w-full rounded-md bg-graygray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0" rows="3"></textarea>
                             </label>
                             <div class="flex items-center justify-end mt-4">
-                                <a href="{{route('adminhome')}}" class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring focus:ring-gray-300 disabled:opacity-25 transition">Back</a>
+                                <a href="{{route('listSection')}}" class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring focus:ring-gray-300 disabled:opacity-25 transition">Back</a>
 
                                 <x-jet-button type="submit" class="ml-4">
                                     {{ __('Create') }}
