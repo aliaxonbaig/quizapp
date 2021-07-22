@@ -62,6 +62,28 @@
                 </div>
 
                 <!-- ---------------- END NEW TABLE --------------------- -->
+                <div class="grid grid-cols-6 gap-6">
+                    <div class="col-span-6 sm:col-span-3">
+                        <label for="first_name" class="block text-sm font-medium text-gray-700">First name</label>
+                        <input type="text" name="first_name" id="first_name" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                    </div>
+
+                    <div class="col-span-6 sm:col-span-3">
+                        <label for="last_name" class="block text-sm font-medium text-gray-700">Last name</label>
+                        <input type="text" name="last_name" id="last_name" autocomplete="family-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                    </div>
+
+                    @foreach(['1','2','3','4','5','6','7'] as $key => $choice)
+                    <div class="col-span-6 sm:col-span-3">
+                        <label for="first_name{{$key}}" class="block text-sm font-medium text-gray-700">First name {{$choice}}</label>
+                        <input type="text" name="first_name{{$key}}" id="first_name{{$key}}" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                    </div>
+                    <div class="col-span-6 sm:col-span-3">
+                        <label for="last_name{{$key}}" class="block text-sm font-medium text-gray-700">Last name {{$choice}}</label>
+                        <input type="text" name="last_name{{$key}}" id="last_name{{$key}}" autocomplete="family-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                    </div>
+                    @endforeach
+                </div>
             </div>
         </div>
     </div>
