@@ -13,7 +13,7 @@ class Question extends Model
         'question',
         'explanation',
         'is_active',
-        'sections_id',
+        'section_id',
         'user_id',
     ];
 
@@ -22,8 +22,13 @@ class Question extends Model
         return $this->belongsTo(Section::class);
     }
 
+    public function answers()
+    {
+        return $this->hasMany(Answer::class);
+    }
+
     public function user()
     {
-        return $this->hasOneThrough(User::class, Section::class);
+        return $this->belongsTo(User::class);
     }
 }
