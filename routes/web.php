@@ -20,19 +20,39 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
 
 Route::middleware(['auth', 'verified', 'role:admin'])->prefix('admin')->group(function () {
+
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+
     Route::get('/adminhome', [AdminController::class, 'adminhome'])->name('adminhome');
-    Route::get('/createSection', [SectionsController::class, 'createSection'])->name('createSection');
-    Route::post('/storeSection/section', [SectionsController::class, 'storeSection'])->name('storeSection');
-    Route::get('/editSection/{section}', [SectionsController::class, 'editSection'])->name('editSection');
-    Route::post('/updateSection/{section}', [SectionsController::class, 'updateSection'])->name('updateSection');
-    Route::get('/listSection', [SectionsController::class, 'listSection'])->name('listSection');
-    Route::get('/detailSection/{section}', [SectionsController::class, 'detailSection'])->name('detailSection');
-    Route::get('/createQuestion/{section}', [QuestionsController::class, 'createQuestion'])->name('createQuestion');
-    Route::get('/detailQuestion/{question}', [QuestionsController::class, 'detailQuestion'])->name('detailQuestion');
-    Route::post('/storeQuestion/{section}', [QuestionsController::class, 'storeQuestion'])->name('storeQuestion');
+
+    Route::get('/createSection', [SectionsController::class, 'createSection'])
+        ->name('createSection');
+
+    Route::post('/storeSection/section', [SectionsController::class, 'storeSection'])
+        ->name('storeSection');
+
+    Route::get('/editSection/{section}', [SectionsController::class, 'editSection'])
+        ->name('editSection');
+
+    Route::post('/updateSection/{section}', [SectionsController::class, 'updateSection'])
+        ->name('updateSection');
+
+    Route::get('/listSection', [SectionsController::class, 'listSection'])
+        ->name('listSection');
+
+    Route::get('/detailSection/{section}', [SectionsController::class, 'detailSection'])
+        ->name('detailSection');
+
+    Route::get('/createQuestion/{section}', [QuestionsController::class, 'createQuestion'])
+        ->name('createQuestion');
+
+    Route::get('/detailQuestion/{question}', [QuestionsController::class, 'detailQuestion'])
+        ->name('detailQuestion');
+
+    Route::post('/storeQuestion/{section}', [QuestionsController::class, 'storeQuestion'])
+        ->name('storeQuestion');
 });

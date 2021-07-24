@@ -7,8 +7,9 @@
     <div class="antialiased text-gray-900 px-6">
         <div class="max-w-xl mx-auto py-5 divide-y md:max-w-4xl">
             <div class="mx-auto bg-gray-100">
-                <div class="flex items-center mt-4">
-                    <a href="{{route('listSection')}}" class="inline-flex items-center px-4 py-2 bg-blue-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-700 active:bg-blue-900 focus:outline-none focus:border-blue-900 focus:ring focus:ring-blue-300 disabled:opacity-25 transition">Back to Sections</a>
+                <div class="flex justify-between items-center mt-4 mb-2">
+                    <a href="{{route('dashboard')}}" class="inline-flex items-center px-4 py-2 bg-blue-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-700 active:bg-blue-900 focus:outline-none focus:border-blue-900 focus:ring focus:ring-blue-300 disabled:opacity-25 transition">Delete Question</a>
+                    <a href="{{url()->previous()}}" class="inline-flex items-center px-4 py-2 bg-blue-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-700 active:bg-blue-900 focus:outline-none focus:border-blue-900 focus:ring focus:ring-blue-300 disabled:opacity-25 transition">Back</a>
                 </div>
                 <!-- --------------------- START NEW TABLE --------------------->
 
@@ -94,7 +95,7 @@
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td class="px-6 py-4 whitespace-nowrap text-lg text-bold">
+                                            <td class="px-6 py-4 text-lg text-bold">
                                                 <div class="text-sm text-gray-900">{{ $question->user->name}}</div>
                                             </td>
                                         </tr>
@@ -126,7 +127,7 @@
                                     <div class="flex items-center">
                                         <div class="ml-4">
                                             <div class="text-sm font-medium text-gray-900">
-                                                {{ Str::limit($answer->answer, 70)}}
+                                                {{ $answer->answer}}
                                             </div>
                                         </div>
                                     </div>
