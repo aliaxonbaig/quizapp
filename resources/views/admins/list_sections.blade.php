@@ -19,7 +19,7 @@
                                 <table class="min-w-full divide-y divide-gray-200">
                                     <thead class="bg-green-300">
                                         <tr>
-                                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-800 uppercase tracking-wider">
                                                 Name
                                             </th>
                                             <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -77,6 +77,5 @@
                 <!-- ---------------- END NEW TABLE --------------------- -->
             </div>
         </div>
-    </div>
     </div>
 </x-app-layout>
