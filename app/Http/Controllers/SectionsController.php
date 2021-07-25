@@ -24,8 +24,8 @@ class SectionsController extends Controller
 
     public function listSection()
     {
-        //$sections = Section::paginate(10);
-        $sections = Section::where('is_active', '1')->paginate(5);
+        $sections = Section::paginate(10);
+        //$sections = Section::where('is_active', '1')->paginate(5);
         return view('admins.list_sections', compact('sections'));
     }
 
@@ -46,7 +46,7 @@ class SectionsController extends Controller
         $input = $request->all();
         $record->fill($input)->save();
         $request->session()->flash('message', 'Section saved successfully!');
-        return $this->listSection();
+        return redirect()->route('listSection');
     }
 
     public function detailSection(Section $section)

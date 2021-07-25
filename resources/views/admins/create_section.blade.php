@@ -5,8 +5,8 @@
         </h2>
     </x-slot>
     <div class="antialiased text-gray-900 px-6">
-        <div class="max-w-xl mx-auto py-5 divide-y md:max-w-4xl">
-            <div class="mx-auto bg-gray-100">
+        <div class="max-w-3xl mx-auto py-3 px-4 sm:px-6 lg:px-8">
+            <div class="bg-gray-100">
                 <h2 class="text-2xl font-bold card bg-green-600 p-4 text-gray-100 rounded-t-lg mx-auto">New Section</h2>
                 @if(Session::has('message'))
                 <h1 class="text-xs font-bold card bg-green-400 p-2 -mb-2 text-green-50">
