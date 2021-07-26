@@ -4,9 +4,9 @@
             {{ __('Section Detail') }}
         </h2>
     </x-slot>
-    <div class="grid grid-cols-1 px-4 py-5 md:px-8 w-full">
-        <div class="w-full mx-auto divide-y md:max-w-6xl">
-            <div class="bg-gray-100">
+    <div class="antialiased text-gray-900 px-6">
+        <div class="max-w-xl mx-auto py-5 divide-y md:max-w-4xl">
+            <div class="mx-auto bg-gray-100">
                 <div class="flex items-center mt-4 mb-2 justify-between">
                     <a href="{{route('createQuestion',$section->id)}}" class="inline-flex items-center px-4 py-2 bg-blue-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-700 active:bg-blue-900 focus:outline-none focus:border-blue-900 focus:ring focus:ring-blue-300 disabled:opacity-25 transition">Create Question</a>
                     <a href="{{route('listSection')}}" class="inline-flex items-center px-4 py-2 bg-blue-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-700 active:bg-blue-900 focus:outline-none focus:border-blue-900 focus:ring focus:ring-blue-300 disabled:opacity-25 transition">Back</a>
@@ -19,12 +19,12 @@
                         <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
                             <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
                                 <table class="min-w-full divide-y divide-gray-200">
-                                    <thead class="bg-green-500 text-white">
+                                    <thead class="bg-green-300 text-blue-600">
                                         <tr>
-                                            <th scope=" col" class="px-6 py-3 text-left text-xs font-medium  uppercase tracking-wider">
+                                            <th scope=" col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                                 Item
                                             </th>
-                                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">
+                                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                                 Details
                                             </th>
                                         </tr>
@@ -114,12 +114,12 @@
                 <!-- --------------------- START NEW TABLE --------------------->
                 <div class="mt-5 rounded-t-lg">
                     <table class="min-w-full divide-y divide-gray-200">
-                        <thead class="bg-green-500 text-white">
+                        <thead class="bg-green-300 text-white">
                             <tr>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                     Name
                                 </th>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium  uppercase tracking-wider">
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                     Status
                                 </th>
                                 <th scope="col" class="relative px-6 py-3">

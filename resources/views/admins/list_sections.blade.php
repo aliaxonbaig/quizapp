@@ -4,30 +4,25 @@
             {{ __('Section Home') }}
         </h2>
     </x-slot>
-    <div class="grid grid-cols-1 px-4 py-5 md:px-8 w-full">
-        <div class="w-full mx-auto divide-y md:max-w-6xl">
-            <div class="bg-gray-100">
-                <div class="flex items-center justify-between mt-4 mb-2">
+    <div class="antialiased text-gray-900 px-6">
+        <div class="mx-auto py-5 divide-y md:max-w-4xl">
+            <div class="mx-auto bg-gray-100">
+                <div class="flex items-center mt-4 mb-2">
                     <a href="{{route('createSection')}}" class="inline-flex items-center px-4 py-2 bg-blue-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-700 active:bg-blue-900 focus:outline-none focus:border-blue-900 focus:ring focus:ring-blue-300 disabled:opacity-25 transition">Create a Section</a>
-                    @if(Session::has('message'))
-                    <h1 class="text-xs font-bold card bg-green-400 p-2 md:px-10 rounded-md text-green-50">
-                        {{session::get('message')}}
-                    </h1>
-                    @endif
                 </div>
                 <!-- --------------------- START NEW TABLE --------------------->
 
-                <div>
+                <div class="flex flex-col">
                     <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                         <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-                            <div class="shadow overflow-hidden border-b border-gray-200 rounded-lg">
+                            <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
                                 <table class="min-w-full divide-y divide-gray-200">
-                                    <thead class="bg-green-500 text-white">
+                                    <thead class="bg-green-300">
                                         <tr>
-                                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium  uppercase tracking-wider">
+                                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-800 uppercase tracking-wider">
                                                 Name
                                             </th>
-                                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium  uppercase tracking-wider">
+                                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                                 Published
                                             </th>
                                             <th scope="col" class="relative px-6 py-3">
@@ -50,11 +45,11 @@
                                                 </div>
                                             </td>
                                             <td class="px-6 py-4">
-                                                <div class="text-sm justify-center font-bold text-gray-600">{{ $section->is_active === '1'  ? 'Yes' : 'No' }}</div>
+                                                <div class="text-sm text-gray-900">{{ $section->is_active === '1'  ? 'Yes' : 'No' }}</div>
                                             </td>
-                                            <td class="sm:flex align-middle justify-center items-center px-6 py-4 text-right text-sm font-medium">
+                                            <td class="flex align-middle justify-center items-center px-6 py-4 text-right text-sm font-medium">
                                                 <a href="{{ route('createQuestion', $section->id )}}" class="text-green-300 hover:text-green-600">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 " viewBox="0 0 20 20" fill="currentColor">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                                                         <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clip-rule="evenodd" />
                                                     </svg>
                                                 </a>
