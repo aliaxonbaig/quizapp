@@ -22,7 +22,11 @@ class SectionFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'user_id' => 1,
+            'name' => $this->faker->sentence(),
+            'description' => $this->faker->sentence(),
+            'is_active' => '1',
+            'details' => $this->faker->paragraph(),
         ];
     }
 }

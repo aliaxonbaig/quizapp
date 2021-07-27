@@ -4,9 +4,9 @@
             {{ __('Admin Home') }}
         </h2>
     </x-slot>
-    <div class="antialiased text-gray-900 px-6">
-        <div class="max-w-xl mx-auto py-5 divide-y md:max-w-4xl">
-            <div class="mx-auto bg-gray-100">
+    <div class="max-w-7xl m-4 mx-auto sm:px-6 lg:px-8">
+        <div class="bg-white mt-4 overflow-hidden shadow-xl sm:rounded-lg">
+            <div class="mx-auto bg-green-200">
                 <h2 class="text-2xl font-bold card bg-green-600 p-4 text-gray-100 rounded-t-lg mx-auto">New Question</h2>
                 @if(Session::has('message'))
                 <h1 class="text-xs font-bold card bg-green-400 p-2 -mb-2 text-green-50">
@@ -22,21 +22,21 @@
                                 @error('question')
                                 <span class="text-red-700 text-xs content-end float-right">{{$message}}</span>
                                 @enderror
-                                <input name="question" value="{{ old('question') }}" type="text" class="mt-1 block w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0" />
+                                <input name="question" value="{{ old('question') }}" type="text" class="mt-1 block w-full rounded-md bg-green-200 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0" />
                             </label>
                             <label class="block">
                                 <span class="text-gray-700">Explanation</span>
                                 @error('explanation')
                                 <span class="text-red-700 text-xs content-end float-right">{{$message}}</span>
                                 @enderror
-                                <textarea name="explanation" type="text" value="{{ old('explanation') }}" class="mt-1 bg-gray-100 block w-full rounded-md bg-graygray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0" rows="2"></textarea>
+                                <textarea name="explanation" type="text" value="{{ old('explanation') }}" class="mt-1 bg-green-200 block w-full rounded-md bg-graygray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0" rows="2"></textarea>
                             </label>
                             <label class="block">
                                 <span class="text-gray-700">Is this question active?</span>
                                 @error('is_active')
                                 <span class="text-red-700 text-xs content-end float-right">{{$message}}</span>
                                 @enderror
-                                <select name="is_active" value="{{ old('is_active') }}" class="block w-full mt-1 rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0">
+                                <select name="is_active" value="{{ old('is_active') }}" class="block w-full mt-1 rounded-md bg-green-200 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0">
                                     <option value="1">Yes</option>
                                     <option value="0">No</option>
                                 </select>
@@ -48,7 +48,7 @@
                                     @enderror
                                     <input type="hidden" value="0" name="answers[0][is_checked]">
                                     <input type="checkbox" value="1" name="answers[0][is_checked]">
-                                    <input name="answers[0][answer]" value="{{ old('answers.0.answer') }}" type="text" class="mt-1 block w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0" />
+                                    <input name="answers[0][answer]" value="{{ old('answers.0.answer') }}" type="text" class="mt-1 block w-full rounded-md bg-green-200 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0" />
                                 </label>
                                 <label class="block">
                                     @error('answers.1.answer')
@@ -56,7 +56,7 @@
                                     @enderror
                                     <input type="hidden" value="0" name="answers[1][is_checked]">
                                     <input type="checkbox" value="1" name="answers[1][is_checked]">
-                                    <input name="answers[1][answer]" value="{{ old('answers.1.answer') }}" type="text" class="mt-1 block w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0" />
+                                    <input name="answers[1][answer]" value="{{ old('answers.1.answer') }}" type="text" class="mt-1 block w-full rounded-md bg-green-200 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0" />
                                 </label>
                                 <label class="block">
                                     @error('answers.2.answer')
@@ -64,7 +64,7 @@
                                     @enderror
                                     <input type="hidden" value="0" name="answers[2][is_checked]">
                                     <input type="checkbox" value="1" name="answers[2][is_checked]">
-                                    <input name="answers[2][answer]" value="{{ old('answers.2.answer') }}" type="text" class="mt-1 block w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0" />
+                                    <input name="answers[2][answer]" value="{{ old('answers.2.answer') }}" type="text" class="mt-1 block w-full rounded-md bg-green-200 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0" />
                                 </label>
                                 <label class="block">
                                     @error('answers.3.answer')
@@ -72,7 +72,7 @@
                                     @enderror
                                     <input type="hidden" value="0" name="answers[3][is_checked]">
                                     <input type="checkbox" value="1" name="answers[3][is_checked]">
-                                    <input name="answers[3][answer]" value="{{ old('answers.3.answer') }}" type="text" class="mt-1 block w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0" />
+                                    <input name="answers[3][answer]" value="{{ old('answers.3.answer') }}" type="text" class="mt-1 block w-full rounded-md bg-green-200 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0" />
                                 </label>
                             </div>
                             <div class="flex items-center justify-end mt-4">

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Section;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Redirect;
 
 class SectionsController extends Controller
 {
@@ -24,8 +26,8 @@ class SectionsController extends Controller
 
     public function listSection()
     {
-        //$sections = Section::paginate(10);
-        $sections = Section::where('is_active', '1')->paginate(5);
+        $sections = Section::paginate(10);
+        //$sections = Section::where('is_active', '1')->paginate(5);
         return view('admins.list_sections', compact('sections'));
     }
 
@@ -45,7 +47,7 @@ class SectionsController extends Controller
         $record = Section::findOrFail($section->id);
         $input = $request->all();
         $record->fill($input)->save();
-        $request->session()->flash('message', 'Section saved successfully!');
+        $request->session()->flash('success', 'Section saved successfully!');
         return $this->listSection();
     }
 
@@ -53,5 +55,13 @@ class SectionsController extends Controller
     {
         $questions = $section->questions()->paginate(10);
         return view('admins.detail_sections', compact('questions', 'section'));
+    }
+
+    public function deleteSection($id)
+    {
+        //$sections = Section::paginate(10);
+        $section = Section::findOrFail($id);
+        $section->delete();
+        return redirect()->back()->withSuccess('Section with id: ' . $section->id . ' deleted successfully');
     }
 }

@@ -4,10 +4,10 @@
             {{ __('Section Detail') }}
         </h2>
     </x-slot>
-    <div class="antialiased text-gray-900 px-6">
-        <div class="max-w-xl mx-auto py-5 divide-y md:max-w-4xl">
-            <div class="mx-auto bg-gray-100">
-                <div class="flex justify-between items-center mt-4 mb-2">
+    <div class="max-w-7xl m-4 mx-auto sm:px-6 lg:px-8">
+        <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+            <div class="mx-auto">
+                <div class="flex justify-between items-center p-4">
                     <a href="{{route('dashboard')}}" class="inline-flex items-center px-4 py-2 bg-blue-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-700 active:bg-blue-900 focus:outline-none focus:border-blue-900 focus:ring focus:ring-blue-300 disabled:opacity-25 transition">Delete Question</a>
                     <a href="{{url()->previous()}}" class="inline-flex items-center px-4 py-2 bg-blue-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-700 active:bg-blue-900 focus:outline-none focus:border-blue-900 focus:ring focus:ring-blue-300 disabled:opacity-25 transition">Back</a>
                 </div>

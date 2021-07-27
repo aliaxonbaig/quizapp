@@ -4,10 +4,10 @@
             {{ __('Section Detail') }}
         </h2>
     </x-slot>
-    <div class="antialiased text-gray-900 px-6">
-        <div class="max-w-xl mx-auto py-5 divide-y md:max-w-4xl">
-            <div class="mx-auto bg-gray-100">
-                <div class="flex items-center mt-4 mb-2 justify-between">
+    <div class="max-w-7xl m-4 mx-auto sm:px-6 lg:px-8">
+        <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+            <div class="mx-auto">
+                <div class="flex items-center p-4 justify-between">
                     <a href="{{route('createQuestion',$section->id)}}" class="inline-flex items-center px-4 py-2 bg-blue-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-700 active:bg-blue-900 focus:outline-none focus:border-blue-900 focus:ring focus:ring-blue-300 disabled:opacity-25 transition">Create Question</a>
                     <a href="{{route('listSection')}}" class="inline-flex items-center px-4 py-2 bg-blue-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-700 active:bg-blue-900 focus:outline-none focus:border-blue-900 focus:ring focus:ring-blue-300 disabled:opacity-25 transition">Back</a>
 

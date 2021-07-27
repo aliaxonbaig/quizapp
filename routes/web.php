@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ManageUserController;
 use App\Http\Controllers\SectionsController;
 use App\Http\Controllers\QuestionsController;
 
@@ -25,12 +26,15 @@ Route::get('/dashboard', function () {
 })->name('dashboard');
 
 Route::middleware(['auth', 'verified', 'role:admin'])->prefix('admin')->group(function () {
-
+    Route::resource('users', ManageUserController::class);
 
     Route::get('/adminhome', [AdminController::class, 'adminhome'])->name('adminhome');
 
     Route::get('/createSection', [SectionsController::class, 'createSection'])
         ->name('createSection');
+
+    Route::post('/deleteSection/{id}', [SectionsController::class, 'deleteSection'])
+        ->name('deleteSection');
 
     Route::post('/storeSection/section', [SectionsController::class, 'storeSection'])
         ->name('storeSection');
