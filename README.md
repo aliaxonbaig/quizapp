@@ -2,12 +2,8 @@
 
 
 ## QuizApp
-This is my first app while revising Laravel, years ago I started webdevelopment and had to abonden for other interests. Today I'm a full time IT professional with webdevelopment as hobby.
+A laravel based QuizApp
 
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please let me know. All security vulnerabilities will be promptly addressed.
 
 ## License
 
