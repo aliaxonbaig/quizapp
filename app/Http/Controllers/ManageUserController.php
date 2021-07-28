@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class ManageUserController extends Controller
 {
@@ -86,6 +87,7 @@ class ManageUserController extends Controller
             return redirect()->back()->withWarning($user->name . ' can\'t be deleted :(');
         }
         $user->delete($id);
+        Log::alert('User ' . $user->name . ' deleted!');
         return redirect()->back()->withSuccess('User ' . $user->name . ' deleted successfully');
     }
 }
