@@ -87,7 +87,6 @@ class ManageUserController extends Controller
             return redirect()->back()->withWarning($user->name . ' can\'t be deleted :(');
         }
         $user->delete($id);
-        Log::alert('User ' . $user->name . ' deleted!');
         return redirect()->back()->withSuccess('User ' . $user->name . ' deleted successfully');
     }
 }

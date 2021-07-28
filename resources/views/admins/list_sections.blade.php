@@ -75,9 +75,8 @@
                                                         <path fill-rule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clip-rule="evenodd" />
                                                     </svg>
                                                 </a>
-                                                <form action="route('deleteSection',$section->id)}}" method="post">
+                                                <form action="{{route('deleteSection',$section->id)}}" method="post">
                                                     @csrf
-                                                    {{Session::flash('backUrl', Request::fullUrl()); }}
                                                     <a class="text-red-500 hover:text-red-700">
                                                         <button type="submit">
                                                             <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 pt-1" viewBox="0 0 20 20" fill="currentColor">

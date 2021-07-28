@@ -59,4 +59,6 @@ Route::middleware(['auth', 'verified', 'role:admin'])->prefix('admin')->group(fu
 
     Route::post('/storeQuestion/{section}', [QuestionsController::class, 'storeQuestion'])
         ->name('storeQuestion');
+    Route::post('/deleteQuestion/{id}', [QuestionsController::class, 'deleteQuestion'])
+        ->name('deleteQuestion');
 });

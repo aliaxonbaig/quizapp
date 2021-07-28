@@ -14,21 +14,20 @@ class SectionsController extends Controller
         return view('admins.create_section');
     }
 
+    public function listSection()
+    {
+        $sections = Section::paginate(10);
+        //$sections = Section::where('is_active', '1')->paginate(5);
+        return view('admins.list_sections', compact('sections'));
+    }
+
     public function storeSection(Request $request)
     {
         $data = $request->validate([
             'section.*' => 'required',
         ]);
         auth()->user()->sections()->createMany($data);
-        $request->session()->flash('message', 'Section saved successfully!');
-        return redirect()->back();
-    }
-
-    public function listSection()
-    {
-        $sections = Section::paginate(10);
-        //$sections = Section::where('is_active', '1')->paginate(5);
-        return view('admins.list_sections', compact('sections'));
+        return redirect()->back()->with('message', 'Section saved successfully!');
     }
 
     public function editSection(Section $section)
@@ -48,7 +47,7 @@ class SectionsController extends Controller
         $input = $request->all();
         $record->fill($input)->save();
         $request->session()->flash('success', 'Section saved successfully!');
-        return $this->listSection();
+        return redirect()->route('listSection');
     }
 
     public function detailSection(Section $section)
