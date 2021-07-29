@@ -41,6 +41,9 @@
                                             <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-white uppercase tracking-wider">
                                                 Published
                                             </th>
+                                            <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-white uppercase tracking-wider">
+                                                Questions
+                                            </th>
                                             <th scope="col" class="relative px-6 py-3">
                                                 <span class="sr-only">Edit</span>
                                             </th>
@@ -62,6 +65,9 @@
                                             </td>
                                             <td class="px-6 py-1">
                                                 <div class="text-sm text-gray-900">{{ $section->is_active === '1'  ? 'Yes' : 'No' }}</div>
+                                            </td>
+                                            <td class="px-6 py-1">
+                                                <div class="text-sm text-gray-900">{{ $section->questions_count }}</div>
                                             </td>
                                             <td class="sm:flex align-middle justify-center items-center px-6 py-1 text-right text-sm font-medium">
                                                 <a href="{{ route('createQuestion', $section->id )}}" class="text-green-500 hover:text-green-700">

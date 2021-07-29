@@ -43,14 +43,15 @@ class QuestionsController extends Controller
         ]);
 
         $status = $question->answers()->createMany($data['answers'])->push();
-        return redirect()->route('detailSection', $section->id)->withSuccess('Questin created successfully');;
+        return redirect()->route('detailSection', $section->id)
+            ->withSuccess('Questin created successfully');;
     }
 
     function deleteQuestion($id)
     {
-        //$sections = Section::paginate(10);
         $question = Question::findOrFail($id);
         $question->delete();
-        return redirect()->back()->withSuccess('Question with id: ' . $question->id . ' deleted successfully');
+        return redirect()->route('detailSection', $question->section->id)
+            ->withSuccess('Question with id: ' . $question->id . ' deleted successfully');
     }
 }

@@ -20,12 +20,14 @@ use App\Http\Controllers\QuestionsController;
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
-
-Route::middleware(['auth', 'verified', 'role:admin'])->prefix('admin')->group(function () {
+Route::middleware(['auth', 'verified', 'role:user|admin'])->group(
+    function () {
+        Route::get('/dashboard', function () {
+            return view('dashboard');
+        })->name('dashboard');
+    }
+);
+Route::middleware(['auth', 'verified', 'role:admin|user'])->prefix('admin')->group(function () {
     Route::resource('users', ManageUserController::class);
 
     Route::get('/adminhome', [AdminController::class, 'adminhome'])->name('adminhome');
@@ -61,4 +63,7 @@ Route::middleware(['auth', 'verified', 'role:admin'])->prefix('admin')->group(fu
         ->name('storeQuestion');
     Route::post('/deleteQuestion/{id}', [QuestionsController::class, 'deleteQuestion'])
         ->name('deleteQuestion');
+});
+
+Route::middleware(['auth', 'verified', 'role:admin|user'])->prefix('user')->group(function () {
 });
