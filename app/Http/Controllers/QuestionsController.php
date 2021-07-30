@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Section;
 use App\Models\Question;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
 
 class QuestionsController extends Controller
@@ -26,7 +27,7 @@ class QuestionsController extends Controller
     {
         $section = $section;
         $data = $request->validate([
-            'question' => 'required',
+            'question' => ['required', Rule::unique('questions')],
             'explanation' => 'required',
             'is_active' => 'required',
             'answers.*.answer' => 'required',

@@ -29,7 +29,7 @@
                                 @error('explanation')
                                 <span class="text-red-700 text-xs content-end float-right">{{$message}}</span>
                                 @enderror
-                                <textarea name="explanation" type="text" value="{{ old('explanation') }}" class="mt-1 bg-gray-200 block w-full text-xs  bg-graygray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0" rows="2"></textarea>
+                                <textarea name="explanation" type="text" class="mt-1 bg-gray-200 block w-full text-xs  bg-graygray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0" rows="2">{{ old('explanation') }}</textarea>
                             </label>
                             <label class="block">
                                 <span class="text-gray-700">Is this question active?</span>
