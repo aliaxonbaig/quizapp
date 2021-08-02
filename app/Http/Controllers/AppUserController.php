@@ -20,9 +20,13 @@ class AppUserController extends Controller
 
     public function startQuiz(Request $request)
     {
-        $section_id = $request->section;
-        $size = $request->number;
+        $request->validate([
+            'section' => 'required',
+            'quizSize' => 'required|numeric'
+        ]);
+        $sectionId = $request->section;
+        $quizSize = $request->quizSize;
 
-        return view('appusers.quiz', compact('section_id', 'size'));
+        return view('appusers.quiz', compact('sectionId', 'quizSize'));
     }
 }

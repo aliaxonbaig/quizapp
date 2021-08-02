@@ -9,8 +9,13 @@ use Illuminate\Support\Str;
 
 class UserQuizlv extends Component
 {
-    public $section_id;
-    public $size;
+    public $totalQuizQuestions;
+    public $currectQuizAnswers;
+    public $quizPecentage;
+    public $quizInProgress = true;
+    public $showResult = false;
+    public $sectionId;
+    public $quizSize;
     public $currentQuestion;
     public $answeredQuestions = [];
     public $userAnswered = [];
@@ -20,7 +25,13 @@ class UserQuizlv extends Component
     public function showResults()
     {
         //Easy part, need a new view to display results and redirect maybe.
-        dd($this->answeredQuestions);
+        $this->totalQuizQuestions = Quiz::where('quizid', $this->quizid)->count();
+        $this->currectQuizAnswers = Quiz::where('quizid', $this->quizid)
+            ->where('is_correct', '1')
+            ->count();
+        $this->quizPecentage = round(($this->currectQuizAnswers / $this->totalQuizQuestions) * 100, 2);
+        $this->showResult = true;
+        $this->quizInProgress = false;
     }
     public function render()
     {
@@ -36,7 +47,7 @@ class UserQuizlv extends Component
 
     public function getNextQuestion()
     {
-        $question = Question::where('section_id', $this->section_id)
+        $question = Question::where('section_id', $this->sectionId)
             ->whereNotIn('id', $this->answeredQuestions)
             ->with('answers')
             ->inRandomOrder()
@@ -60,7 +71,7 @@ class UserQuizlv extends Component
         $answerId = '';
         $isChoiceCorrect = '';
         $this->reset('userAnswered');
-        if ($this->count == $this->size) {
+        if ($this->count == $this->quizSize) {
             $this->showResults();
         }
         $this->currentQuestion = $this->getNextQuestion();

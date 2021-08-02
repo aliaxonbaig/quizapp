@@ -20,6 +20,11 @@
                         {{ __('Admin Home') }}
                     </x-jet-nav-link>
                     @endhasrole
+                    @hasrole('user|admin|superadmin')
+                    <x-jet-nav-link href="{{ route('appuserIndex') }}" :active="request()->routeIs('appuserIndex')">
+                        {{ __('Quiz Home') }}
+                    </x-jet-nav-link>
+                    @endhasrole
                 </div>
             </div>
 
@@ -148,6 +153,11 @@
             @hasrole('admin')
             <x-jet-responsive-nav-link href="{{ route('adminhome') }}" :active="request()->routeIs('adminhome')">
                 {{ __('Admin Home') }}
+            </x-jet-responsive-nav-link>
+            @endhasrole
+            @hasrole('admin')
+            <x-jet-responsive-nav-link href="{{ route('appuserIndex') }}" :active="request()->routeIs('appuserIndex')">
+                {{ __('Quiz Home') }}
             </x-jet-responsive-nav-link>
             @endhasrole
         </div>
