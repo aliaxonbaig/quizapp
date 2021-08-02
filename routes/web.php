@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AppUserController;
 use App\Http\Controllers\ManageUserController;
 use App\Http\Controllers\SectionsController;
 use App\Http\Controllers\QuestionsController;
@@ -65,5 +66,8 @@ Route::middleware(['auth', 'verified', 'role:admin|user'])->prefix('admin')->gro
         ->name('deleteQuestion');
 });
 
-Route::middleware(['auth', 'verified', 'role:admin|user'])->prefix('user')->group(function () {
+Route::middleware(['auth', 'verified', 'role:admin|user'])->prefix('appuser')->group(function () {
+
+    Route::get('/', [AppUserController::class, 'index'])->name('appuserIndex');
+    Route::post('/startQuiz', [AppUserController::class, 'startQuiz'])->name('startQuiz');
 });
