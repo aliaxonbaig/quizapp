@@ -11,7 +11,8 @@ class AppUserController extends Controller
 {
     public function index()
     {
-        $sections = Section::where('is_active', '1')
+        $sections = Section::withCount('questions')
+            ->where('is_active', '1')
             ->orderBy('name')
             ->get();
 

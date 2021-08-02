@@ -28,7 +28,7 @@ Route::middleware(['auth', 'verified', 'role:user|admin'])->group(
         })->name('dashboard');
     }
 );
-Route::middleware(['auth', 'verified', 'role:admin|user'])->prefix('admin')->group(function () {
+Route::middleware(['auth', 'verified', 'role:admin'])->prefix('admin')->group(function () {
     Route::resource('users', ManageUserController::class);
 
     Route::get('/adminhome', [AdminController::class, 'adminhome'])->name('adminhome');

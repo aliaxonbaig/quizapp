@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use App\Models\Quiz;
 use Livewire\Component;
 use App\Models\Question;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 
 class UserQuizlv extends Component
@@ -52,6 +53,9 @@ class UserQuizlv extends Component
             ->with('answers')
             ->inRandomOrder()
             ->first();
+        if ($question === null) {
+            return $this->showResults();
+        }
         array_push($this->answeredQuestions, $question->id);
         return $question;
     }
