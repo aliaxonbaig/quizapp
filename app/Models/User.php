@@ -71,4 +71,9 @@ class User extends Authenticatable
     {
         return $this->hasManyThrough(Question::class, Section::class);
     }
+
+    public function quizHeaders()
+    {
+        return $this->hasMany(QuizHeader::class);
+    }
 }

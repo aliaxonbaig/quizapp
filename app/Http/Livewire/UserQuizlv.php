@@ -5,8 +5,7 @@ namespace App\Http\Livewire;
 use App\Models\Quiz;
 use Livewire\Component;
 use App\Models\Question;
-use Illuminate\Support\Arr;
-use Illuminate\Support\Str;
+use App\Models\QuizHeader;
 
 class UserQuizlv extends Component
 {
@@ -25,12 +24,16 @@ class UserQuizlv extends Component
 
     public function showResults()
     {
-        //Easy part, need a new view to display results and redirect maybe.
-        $this->totalQuizQuestions = Quiz::where('quizid', $this->quizid)->count();
-        $this->currectQuizAnswers = Quiz::where('quizid', $this->quizid)
+        $this->totalQuizQuestions = Quiz::where('quiz_header_id', $this->quizid->id)->count();
+        $this->currectQuizAnswers = Quiz::where('quiz_header_id', $this->quizid->id)
             ->where('is_correct', '1')
             ->count();
         $this->quizPecentage = round(($this->currectQuizAnswers / $this->totalQuizQuestions) * 100, 2);
+        //$trackQuizStatus = QuizHeader::find($this->quizid->id)->first();
+
+        $this->quizid->completed = true;
+        $this->quizid->score = $this->quizPecentage;
+        $this->quizid->save();
         $this->showResult = true;
         $this->quizInProgress = false;
     }
@@ -41,7 +44,10 @@ class UserQuizlv extends Component
 
     public function mount()
     {
-        $this->quizid = auth()->id() . '-' . time() . '-' . Str::random(12);
+        $this->quizid = QuizHeader::create([
+            'user_id' => auth()->id(),
+            'quiz_size' => $this->quizSize,
+        ]);
         $this->count = 1;
         $this->currentQuestion = $this->getNextQuestion();
     }
@@ -62,15 +68,18 @@ class UserQuizlv extends Component
 
     public function nextQuestion()
     {
-        $storeQuestion = new Quiz();
+        // $trackQuizStatus = QuizHeader::where('id', $this->quizid->id)->first();
+        $this->quizid->questions_taken = serialize($this->answeredQuestions);
         list($answerId, $isChoiceCorrect) = explode(',', $this->userAnswered[0]);
-        $storeQuestion->user_id = auth()->id();
-        $storeQuestion->quizid = $this->quizid;
-        $storeQuestion->question_id = $this->currentQuestion->id;
-        $storeQuestion->section_id = $this->currentQuestion->section_id;
-        $storeQuestion->answer_id = $answerId;
-        $storeQuestion->is_correct = $isChoiceCorrect;
-        $storeQuestion->save();
+        Quiz::create([
+            'user_id' => auth()->id(),
+            'quiz_header_id' => $this->quizid->id,
+            'section_id' => $this->currentQuestion->section_id,
+            'question_id' => $this->currentQuestion->id,
+            'answer_id' => $answerId,
+            'is_correct' => $isChoiceCorrect
+        ]);
+        $this->quizid->save();
         $this->count++;
         $answerId = '';
         $isChoiceCorrect = '';

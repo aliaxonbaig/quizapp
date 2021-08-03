@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateQuizzesTable extends Migration
+class CreateQuizHeadersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,13 @@ class CreateQuizzesTable extends Migration
      */
     public function up()
     {
-        Schema::create('quizzes', function (Blueprint $table) {
+        Schema::create('quiz_headers', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->foreignId('quiz_header_id')->constrained()->onDelete('cascade');
-            $table->foreignId('section_id')->constrained();
-            $table->foreignId('question_id')->constrained();
-            $table->foreignId('answer_id')->constrained();
-            $table->enum('is_correct', [0, 1])->default(0);
+            $table->boolean('completed')->default(false);
+            $table->unsignedInteger('quiz_size');
+            $table->text('questions_taken')->nullable()->default(null);
+            $table->double('score', 2)->default(0);
             $table->timestamps();
         });
     }
@@ -32,6 +31,6 @@ class CreateQuizzesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('quizzes');
+        Schema::dropIfExists('quiz_headers');
     }
 }

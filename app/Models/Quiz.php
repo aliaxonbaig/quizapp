@@ -22,11 +22,16 @@ class Quiz extends Model
 
     public function user()
     {
-        $this->belongsTo(User::class);
+        return $this->belongsTo(User::class);
     }
 
     public function section()
     {
-        $this->belongsTo(Section::class);
+        return $this->belongsTo(Section::class);
+    }
+
+    public function quizHeader()
+    {
+        return $this->belongsTo(QuizHeader::class);
     }
 }

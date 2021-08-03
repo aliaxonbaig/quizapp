@@ -9,13 +9,7 @@ class Question extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'question',
-        'explanation',
-        'is_active',
-        'section_id',
-        'user_id',
-    ];
+    protected $guarded = [];
 
     public function section()
     {
