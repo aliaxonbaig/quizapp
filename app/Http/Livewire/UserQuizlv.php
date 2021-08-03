@@ -42,7 +42,7 @@ class UserQuizlv extends Component
     public function mount()
     {
         $this->quizid = auth()->id() . '-' . time() . '-' . Str::random(12);
-        $this->count = 0;
+        $this->count = 1;
         $this->currentQuestion = $this->getNextQuestion();
     }
 
@@ -75,7 +75,7 @@ class UserQuizlv extends Component
         $answerId = '';
         $isChoiceCorrect = '';
         $this->reset('userAnswered');
-        if ($this->count == $this->quizSize) {
+        if ($this->count == $this->quizSize + 1) {
             $this->showResults();
         }
         $this->currentQuestion = $this->getNextQuestion();

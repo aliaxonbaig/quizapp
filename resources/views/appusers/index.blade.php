@@ -15,17 +15,17 @@
             <div class="md:grid grid-cols-3 mt-10 justify-center gap-5">
                 <div class="m-3  min-w-full mx-auto">
                     <p class="bg-white tracking-wide text-gray-800 font-bold rounded border-2 border-blue-500 hover:border-blue-500 hover:bg-blue-500 hover:text-white shadow-md py-2 px-6 items-center">
-                        <span class="mx-auto font-extrabold text-blue-800 pr-2">99</span><span> Sections</span>
+                        <span class="mx-auto font-extrabold text-blue-800 pr-2">{{$sections->count()}}</span><span> Sections</span>
                     </p>
                 </div>
                 <div class="m-3  min-w-full mx-auto">
                     <p class="bg-white tracking-wide text-gray-800 font-bold rounded border-2 border-blue-500 hover:border-blue-500 hover:bg-blue-500 hover:text-white shadow-md py-2 px-6 items-center">
-                        <span class="mx-auto font-extrabold text-blue-800 pr-2">100</span><span> Total Questions</span>
+                        <span class="mx-auto font-extrabold text-blue-800 pr-2">{{$questionsCount}}</span><span> Total Questions</span>
                     </p>
                 </div>
                 <div class="m-3  min-w-full mx-auto justify-center">
                     <p class="bg-white tracking-wide text-gray-800 font-bold rounded border-2 border-blue-500 hover:border-blue-500 hover:bg-blue-500 hover:text-white shadow-md py-2 px-6 items-center">
-                        <span class="mx-auto font-extrabold text-blue-800 pr-2">200</span><span> Registered Users</span>
+                        <span class="mx-auto font-extrabold text-blue-800 pr-2">{{$activeUsers}}</span><span> Registered Users</span>
                     </p>
                 </div>
             </div>
