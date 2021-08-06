@@ -10,7 +10,7 @@
             </h2>
             <p class="text-md mt-10"> Quiz Progress: <span class="font-extrabold text-blue-600 mr-2"> {{$count .'/'. $quizSize}} </span> </p>
         </div>
-        <form wire:submit.prevent>
+        <form wire:submit.prevent="">
             @csrf
             <div class="md:grid grid-cols-1 mt-10 justify-center gap-5">
                 <div class="m-3  min-w-full mx-auto">
@@ -70,6 +70,11 @@
                     <span class="mx-auto font-extrabold text-blue-800 pr-2">{{$quizPecentage}}</span><span> Percentage</span>
                 </p>
             </div>
+        </div>
+        <div class="m-3 justify-end p-3 mx-auto">
+            <a href="{{route('userQuizHome')}}" class="bg-white tracking-wide text-gray-800 font-bold rounded border-2 border-blue-500 hover:border-blue-500 hover:bg-blue-500 hover:text-white shadow-md py-2 px-6 items-center">
+                View your Quiz Histry
+            </a>
         </div>
     </div>
     @endif

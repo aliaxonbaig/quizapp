@@ -20,4 +20,9 @@ class QuizHeader extends Model
     {
         return $this->hasMany(Quiz::class);
     }
+
+    public function section()
+    {
+        return $this->belongsTo(Section::class);
+    }
 }

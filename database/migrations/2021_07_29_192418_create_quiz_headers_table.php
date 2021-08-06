@@ -16,6 +16,7 @@ class CreateQuizHeadersTable extends Migration
         Schema::create('quiz_headers', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('section_id')->constrained()->onDelete('cascade');
             $table->boolean('completed')->default(false);
             $table->unsignedInteger('quiz_size');
             $table->text('questions_taken')->nullable()->default(null);

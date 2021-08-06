@@ -10,14 +10,9 @@ class Quiz extends Model
     use HasFactory;
     protected $guarded = [];
 
-    public function question()
+    public function questions()
     {
-        return $this->belongsTo(Question::class);
-    }
-
-    public function answer()
-    {
-        return $this->belongsTo(Answer::class);
+        return $this->hasMany(Question::class);
     }
 
     public function user()

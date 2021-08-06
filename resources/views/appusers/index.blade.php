@@ -29,10 +29,10 @@
                     </p>
                 </div>
             </div>
-            <div class="md:grid grid-cols-3 mt-10 justify-center text-center gap-5">
-                <div class="grid grid-cols-1 gap-6">
-                    <form action="{{route('startQuiz')}}" method="post">
-                        @csrf
+            <div class="my-7">
+                <form action="{{route('startQuiz')}}" method="post">
+                    @csrf
+                    <div class="md:flex mx-auto gap-2 justify-center text-center">
                         <select name="section" class="block w-full mt-1 rounded-md bg-gray-100 border-2 border-gray-500 focus:bg-white focus:ring-0">
                             @foreach($sections as $section)
                             @if($section->questions_count>0)
@@ -43,13 +43,11 @@
                         <select name="quizSize" class="block w-full mt-1 rounded-md bg-gray-100 border-2 border-gray-500 focus:bg-white focus:ring-0">
                             @for ($i = 1; $i <= 50; $i++) <option value="{{ $i }}">{{ $i }}</option> @endfor
                         </select>
-                        <div class="flex items-center justify-end mt-4">
-                            <x-jet-button type="submit" class="ml-4">
-                                {{ __('Start Quiz') }}
-                            </x-jet-button>
-                        </div>
-                    </form>
-                </div>
+                        <x-jet-button type="submit" class="block w-full rounded-md text-justify py-4 mt-4">
+                            {{ __('Start Quiz') }}
+                        </x-jet-button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

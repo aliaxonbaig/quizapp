@@ -29,6 +29,7 @@ Route::middleware(['auth', 'verified', 'role:user|admin'])->group(
     }
 );
 Route::middleware(['auth', 'verified', 'role:admin'])->prefix('admin')->group(function () {
+
     Route::resource('users', ManageUserController::class);
 
     Route::get('/adminhome', [AdminController::class, 'adminhome'])->name('adminhome');
@@ -69,5 +70,8 @@ Route::middleware(['auth', 'verified', 'role:admin'])->prefix('admin')->group(fu
 Route::middleware(['auth', 'verified', 'role:admin|user'])->prefix('appuser')->group(function () {
 
     Route::get('/', [AppUserController::class, 'index'])->name('appuserIndex');
+    Route::get('/userQuizHome', [AppUserController::class, 'userQuizHome'])->name('userQuizHome');
+    Route::get('/userQuizDetails/{id}', [AppUserController::class, 'userQuizDetails'])->name('userQuizDetails');
+    Route::post('/deleteUserQuiz/{id}', [AppUserController::class, 'deleteUserQuiz'])->name('deleteUserQuiz');
     Route::post('/startQuiz', [AppUserController::class, 'startQuiz'])->name('startQuiz');
 });
