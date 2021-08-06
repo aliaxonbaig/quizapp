@@ -49,9 +49,14 @@
                         <dt class="text-sm font-medium text-gray-500">
                             Quiz Score
                         </dt>
-                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 bg-green-200 rounded-lg">
+                        @if($userQuizDetails->score < 70) <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 bg-red-300 rounded-lg">
                             {{$userQuizDetails->score .'%'}}
-                        </dd>
+                            </dd>
+                            @else
+                            <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 bg-green-300 rounded-lg">
+                                {{$userQuizDetails->score .'%'}}
+                            </dd>
+                            @endif
                     </div>
                     <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                         <dt class="text-sm font-medium text-gray-500">
@@ -74,9 +79,15 @@
             <div class="px-4 py-5 sm:px-6">
                 <h3 class="text-lg leading-6 mb-2 font-medium text-gray-900">
                     <span class="mr-2 font-extrabold"> {{$key + 1}}</span> {{$question->question}}
-                    <div>
-                        <span class="block text-sm ">Explanation</span>
-                        <span class="block bg-green-100 text-xs my-2 p-4">{{$question->explanation}}</span>
+                    <div x-data={show:false} class="block text-xs">
+                        <div class="p-1" id="headingOne">
+                            <button @click="show=!show" class="underline text-blue-500 hover:text-blue-700 focus:outline-none text-xs px-3" type="button">
+                                Explanation
+                            </button>
+                        </div>
+                        <div x-show="show" class="block p-2 bg-green-100 text-xs">
+                            {{$question->explanation}}
+                        </div>
                     </div>
                 </h3>
                 @foreach($question->answers as $key => $answer)
@@ -90,7 +101,7 @@
                 </div>
                 @elseif($answer->is_checked && $userAnswer->is_correct === '0')
                 <div class="mt-1 max-w-auto text-sm px-2 rounded-lg text-white bg-green-500 font-extrabold ">
-                    <span class="mr-2 font-extrabold">{{$choice->values()->get($key)}} Correct Answer: </span> {{$answer->answer}}
+                    <span class="mr-2 font-extrabold">{{$choice->values()->get($key)}} </span> {{$answer->answer}} <span class="p-1 font-extrabold">(Correct Answer)</span>
                 </div>
                 @else
                 <div class="mt-1 max-w-auto text-sm px-2 rounded-lg text-gray-500 font-extrabold ">

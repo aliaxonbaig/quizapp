@@ -1524,6 +1524,9 @@ select {
 .rounded-xl {
 	border-radius: 0.75rem;
 }
+.rounded-sm {
+	border-radius: 0.125rem;
+}
 .rounded-l-md {
 	border-top-left-radius: 0.375rem;
 	border-bottom-left-radius: 0.375rem;
@@ -1568,6 +1571,9 @@ select {
 }
 .border-r {
 	border-right-width: 1px;
+}
+.border-b-0 {
+	border-bottom-width: 0px;
 }
 .border-gray-300 {
 	--tw-border-opacity: 1;
@@ -1799,6 +1805,10 @@ select {
 .px-5 {
 	padding-left: 1.25rem;
 	padding-right: 1.25rem;
+}
+.px-10 {
+	padding-left: 2.5rem;
+	padding-right: 2.5rem;
 }
 .pt-6 {
 	padding-top: 1.5rem;

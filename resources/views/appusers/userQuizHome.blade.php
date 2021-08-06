@@ -23,7 +23,7 @@
         <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
             <div class="mx-auto">
                 <div class="flex justify-between items-center py-4">
-                    <a href="{{route('appuserIndex')}}"" class=" tracking-wide font-bold rounded border-2 border-blue-500 hover:border-blue-500 bg-blue-500 text-white hover:bg-blue-600 transition shadow-md py-2 px-6 items-center">Take a New Quiz</a>
+                    <a href="{{route('appuserIndex')}}"" class=" tracking-wide font-bold rounded border-2 border-blue-500 hover:border-blue-500 bg-blue-500 text-white hover:bg-blue-600 transition shadow-md py-1 px-6 items-center">Take a New Quiz</a>
                     <p class="tracking-wide font-bold rounded @if(round($quizAverage,2)<70) bg-red-500 @endif  @if(round($quizAverage,2)>=70) bg-green-600 @endif text-white shadow-md py-2 px-6 items-center">Average Score: <span class="mx-2"> {{round($quizAverage,2) .'%'}}</span></p>
                 </div>
                 <!-- --------------------- START NEW TABLE --------------------->
