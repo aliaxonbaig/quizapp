@@ -9,16 +9,16 @@
 
         <div class="bg-white shadow overflow-hidden sm:rounded-lg">
             <div class="px-4 py-5 sm:px-6">
-                <h3 class="text-lg leading-6 font-medium text-gray-900">
+                <h1 class="text-sm leading-6 font-medium text-gray-900">
                     Quiz Information
-                </h3>
+                </h1>
                 <p class="mt-1 max-w-2xl text-sm text-gray-500">
                     You took this quiz {{$userQuizDetails->updated_at->diffForHumans()}}
                 </p>
             </div>
             <div class="border-t border-gray-200">
                 <dl>
-                    <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                    <div class="bg-gray-50 px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                         <dt class="text-sm font-medium text-gray-500">
                             Section Title
                         </dt>
@@ -29,7 +29,7 @@
                             </p>
                         </dd>
                     </div>
-                    <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                    <div class="bg-white px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                         <dt class="text-sm font-medium text-gray-500">
                             Quiz Completion Status
                         </dt>
@@ -37,7 +37,7 @@
                             {{$userQuizDetails->completed ? 'Completed' : 'Not Completed'}}
                         </dd>
                     </div>
-                    <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                    <div class="bg-gray-50 px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                         <dt class="text-sm font-medium text-gray-500">
                             Total Quiz Questions
                         </dt>
@@ -45,11 +45,11 @@
                             {{$userQuizDetails->quiz_size}}
                         </dd>
                     </div>
-                    <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                    <div class="bg-white px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                         <dt class="text-sm font-medium text-gray-500">
                             Quiz Score
                         </dt>
-                        @if($userQuizDetails->score < 70) <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 bg-red-300 rounded-lg">
+                        @if($userQuizDetails->score < 70) <dd class="mt-1 px-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 bg-red-300 rounded-lg">
                             {{$userQuizDetails->score .'%'}}
                             </dd>
                             @else
@@ -58,7 +58,7 @@
                             </dd>
                             @endif
                     </div>
-                    <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                    <div class="bg-white px-4 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                         <dt class="text-sm font-medium text-gray-500">
                             Quiz Duration
                         </dt>
@@ -75,7 +75,7 @@
         @php
         $userAnswer = $userQuiz[$key];
         @endphp
-        <div class="bg-white shadow overflow-hidden sm:rounded-lg mt-2">
+        <div class="bg-white shadow overflow-hidden sm:rounded-lg mt-6">
             <div class="px-4 py-5 sm:px-6">
                 <h3 class="text-lg leading-6 mb-2 font-medium text-gray-900">
                     <span class="mr-2 font-extrabold"> {{$key + 1}}</span> {{$question->question}}

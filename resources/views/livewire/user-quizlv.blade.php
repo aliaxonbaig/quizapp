@@ -2,41 +2,52 @@
 
     <!-- Start of quiz box -->
     @if($quizInProgress)
-
-    <div class="bg-white rounded-lg shadow-lg p-2 sm:p-4">
-        <div class="text-center">
-            <h2 class="text-2xl tracking-tight leading-10 font-extrabold text-gray-900 md:text-3xl sm:leading-none">
-                User Name: <span class="text-indigo-600 ml-2"> {{Auth::user()->name.'!'}} </span>
-            </h2>
-            <p class="text-md mt-10"> Quiz Progress: <span class="font-extrabold text-blue-600 mr-2"> {{$count .'/'. $quizSize}} </span> </p>
+    <div class="px-4 -py-3 sm:px-6">
+        <div class="flex max-w-auto justify-between">
+            <h1 class="text-sm leading-6 font-medium text-gray-900">
+                <span class="text-gray-400 font-extrabold p-1">User</span>
+                <span class="font-bold p-2 leading-loose bg-blue-500 text-white rounded-lg">{{Auth::user()->name}}</span>
+            </h1>
+            <p class="mt-1 max-w-2xl text-sm text-gray-500">
+                <span class="text-gray-400 font-extrabold p-1">Quiz Progress </span>
+                <span class="font-bold p-3 leading-loose bg-blue-500 text-white rounded-full">{{$count .'/'. $quizSize}}</span>
+            </p>
         </div>
+    </div>
+    <div class="bg-white shadow overflow-hidden sm:rounded-lg mt-6">
         <form wire:submit.prevent="">
             @csrf
-            <div class="md:grid grid-cols-1 mt-10 justify-center gap-5">
-                <div class="m-3  min-w-full mx-auto">
-                    <p class="tracking-wide font-bold rounded border-2 border-blue-500 bg-blue-500 text-white shadow-md py-2 px-6 items-center">
-                        <span class="mx-auto font-extrabold pr-2">{{$count}}</span><span> {{$currentQuestion->question}}</span>
-                    </p>
-                </div>
+            <div class="px-4 py-5 sm:px-6">
+                <h3 class="text-lg leading-6 mb-2 font-medium text-gray-900">
+                    <span class="mr-2 font-extrabold"> {{$count}}</span> {{$currentQuestion->question}}
+                    <div x-data={show:false} class="block text-xs">
+                        <div class="p-1" id="headingOne">
+                            <button @click="show=!show" class="underline text-blue-500 hover:text-blue-700 focus:outline-none text-xs px-3" type="button">
+                                Explanation
+                            </button>
+                        </div>
+                        <div x-show="show" class="block p-2 bg-green-100 text-xs">
+                            {{$currentQuestion->explanation}}
+                        </div>
+                    </div>
+                </h3>
                 @foreach($currentQuestion->answers as $answer)
-                <div class="m-3  min-w-full mx-auto">
-                    <label for="question-{{$answer->id}}">
-                        <p class="bg-white tracking-wide text-gray-800 font-bold rounded border-2 border-blue-500 hover:border-blue-500 hover:bg-blue-500 hover:text-white shadow-md py-2 px-6 items-center">
-                            <span class="mx-auto font-extrabold text-blue-800 pr-2"><input id="question-{{$answer->id}}" value="{{$answer->id .','.$answer->is_checked}}" wire:model="userAnswered" type="checkbox"></span><span> {{$answer->answer}}</span>
-                        </p>
-                    </label>
-                </div>
+                <label for="question-{{$answer->id}}">
+                    <div class="max-w-auto px-3 py-3 m-3 text-gray-600 rounded-lg bg-blue-200 text-base ">
+                        <span class="mr-2 font-extrabold"><input id="question-{{$answer->id}}" value="{{$answer->id .','.$answer->is_checked}}" wire:model="userAnswered" type="checkbox"> </span> {{$answer->answer}}
+                    </div>
+                </label>
                 @endforeach
-                <div class="flex items-center justify-end mt-4">
-                    @if($count < $quizSize) <x-jet-button wire:click="nextQuestion" type="submit" class="ml-4">
-                        {{ __('Next Question') }}
-                        </x-jet-button>
-                        @else
-                        <x-jet-button wire:click="nextQuestion" type="submit" class="ml-4">
-                            {{ __('Show Results') }}
-                        </x-jet-button>
-                        @endif
-                </div>
+            </div>
+            <div class="flex items-center justify-end mt-4">
+                @if($count < $quizSize) <x-jet-button wire:click="nextQuestion" type="submit" class="m-4">
+                    {{ __('Next Question') }}
+                    </x-jet-button>
+                    @else
+                    <x-jet-button wire:click="nextQuestion" type="submit" class="m-4">
+                        {{ __('Show Results') }}
+                    </x-jet-button>
+                    @endif
             </div>
         </form>
     </div>

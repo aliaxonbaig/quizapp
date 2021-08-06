@@ -122,7 +122,16 @@
                 <!-- ---------------- END NEW TABLE --------------------- -->
 
                 <!-- --------------------- START NEW TABLE --------------------->
-
+                @if($questions->isEmpty())
+                <div class="px-4 py-5 my-3 sm:px-6">
+                    <h1 class="text-sm leading-6 font-medium text-gray-900">
+                        No question under this section are found!
+                    </h1>
+                    <p class="mt-1 max-w-2xl text-sm text-gray-500">
+                        Create some questions, they will appear here!
+                    </p>
+                </div>
+                @else
                 <div class="flex flex-col">
                     <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                         <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
@@ -191,6 +200,7 @@
                         </div>
                     </div>
                 </div>
+                @endif
                 <!-- ---------------- END NEW TABLE --------------------- -->
             </div>
         </div>

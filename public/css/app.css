@@ -1718,6 +1718,14 @@ select {
 	--tw-bg-opacity: 1;
 	background-color: rgba(252, 165, 165, var(--tw-bg-opacity));
 }
+.bg-blue-600 {
+	--tw-bg-opacity: 1;
+	background-color: rgba(37, 99, 235, var(--tw-bg-opacity));
+}
+.bg-blue-200 {
+	--tw-bg-opacity: 1;
+	background-color: rgba(191, 219, 254, var(--tw-bg-opacity));
+}
 .bg-opacity-25 {
 	--tw-bg-opacity: 0.25;
 }
@@ -1932,6 +1940,9 @@ select {
 }
 .leading-6 {
 	line-height: 1.5rem;
+}
+.leading-loose {
+	line-height: 2;
 }
 .tracking-widest {
 	letter-spacing: 0.1em;
