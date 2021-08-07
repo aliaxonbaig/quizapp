@@ -16,10 +16,10 @@
     </div>
     <div class="bg-white shadow overflow-hidden sm:rounded-lg mt-6">
         <form wire:submit.prevent="">
-            @csrf
             <div class="px-4 py-5 sm:px-6">
                 <h3 class="text-lg leading-6 mb-2 font-medium text-gray-900">
                     <span class="mr-2 font-extrabold"> {{$count}}</span> {{$currentQuestion->question}}
+                    @if($learningMode)
                     <div x-data={show:false} class="block text-xs">
                         <div class="p-1" id="headingOne">
                             <button @click="show=!show" class="underline text-blue-500 hover:text-blue-700 focus:outline-none text-xs px-3" type="button">
@@ -30,23 +30,24 @@
                             {{$currentQuestion->explanation}}
                         </div>
                     </div>
+                    @endif
                 </h3>
                 @foreach($currentQuestion->answers as $answer)
                 <label for="question-{{$answer->id}}">
-                    <div class="max-w-auto px-3 py-3 m-3 text-gray-600 rounded-lg bg-blue-200 text-base ">
+                    <div class="max-w-auto px-3 py-3 m-3 text-gray-800 rounded-lg border-2 border-gray-300 text-sm ">
                         <span class="mr-2 font-extrabold"><input id="question-{{$answer->id}}" value="{{$answer->id .','.$answer->is_checked}}" wire:model="userAnswered" type="checkbox"> </span> {{$answer->answer}}
                     </div>
                 </label>
                 @endforeach
             </div>
             <div class="flex items-center justify-end mt-4">
-                @if($count < $quizSize) <x-jet-button wire:click="nextQuestion" type="submit" class="m-4">
+                @if($count < $quizSize) <button wire:click="nextQuestion" type="submit" @if($isDisabled) disabled='disabled' @endif class="m-4 inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring focus:ring-gray-300 disabled:opacity-25 transition">
                     {{ __('Next Question') }}
-                    </x-jet-button>
+                    </button>
                     @else
-                    <x-jet-button wire:click="nextQuestion" type="submit" class="m-4">
+                    <button wire:click="nextQuestion" type="submit" @if($isDisabled) disabled='disabled' @endif class="m-4 inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring focus:ring-gray-300 disabled:opacity-25 transition">
                         {{ __('Show Results') }}
-                    </x-jet-button>
+                    </button>
                     @endif
             </div>
         </form>

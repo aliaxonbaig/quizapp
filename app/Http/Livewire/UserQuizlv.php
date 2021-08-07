@@ -9,16 +9,18 @@ use App\Models\QuizHeader;
 
 class UserQuizlv extends Component
 {
-    public $quizid;                     #Passed from parent view "quiz.blade.php" to this Livewire component
-    public $quizSize;                   #Passed from parent view "quiz.blade.php" to this Livewire component
+    public $quizid;
+    public $quizSize;
     public $count = 0;
     public $sectionId;
     public $quizPecentage;
     public $currentQuestion;
+    public $isDisabled = true;
     public $userAnswered = [];
     public $showResult = false;
     public $currectQuizAnswers;
     public $totalQuizQuestions;
+    public $learningMode = true;
     public $quizInProgress = true;
     public $answeredQuestions = [];
 
@@ -56,6 +58,15 @@ class UserQuizlv extends Component
         return view('livewire.user-quizlv');
     }
 
+    public function updatedUserAnswered()
+    {
+        if (empty($this->userAnswered)) {
+            $this->isDisabled = true;
+        } else {
+            $this->isDisabled = false;
+        }
+    }
+
     public function mount()
     {
         // Create a new quiz header in quiz_headers table and populate initial quiz information
@@ -65,10 +76,7 @@ class UserQuizlv extends Component
             'quiz_size' => $this->quizSize,
             'section_id' => $this->sectionId,
         ]);
-
-
         $this->count = 1;
-
         // Get the first/next question for the quiz.
         // Since we are using LiveWire component for quiz, the first quesiton and answers will be displayed through mount function.
         $this->currentQuestion = $this->getNextQuestion();
@@ -79,12 +87,14 @@ class UserQuizlv extends Component
         //Return a random question from the selectoin selection by the user for quiz.
         $question = Question::where('section_id', $this->sectionId)
             ->whereNotIn('id', $this->answeredQuestions)
-            ->with('answers')
+            ->with(['answers' => function ($question) {
+                $question->inRandomOrder();
+            }])
             ->inRandomOrder()
             ->first();
 
         //If the quiz size is greater then actual questions available in the quiz sections,
-        //Finish the quiz and take the user to results page on exhausting all question fro the slected section.
+        //Finish the quiz and take the user to results page on exhausting all question from a given section.
         if ($question === null) {
             //Update quiz size to curret count as we have ran out of quesitons and forcing user to end the quiz ;)
             $this->quizid->quiz_size = $this->count - 1;
@@ -126,6 +136,7 @@ class UserQuizlv extends Component
         $answerId = '';
         $isChoiceCorrect = '';
         $this->reset('userAnswered');
+        $this->isDisabled = true;
 
         // Finish the quiz when user has successfully taken all question in the quiz.
         if ($this->count == $this->quizSize + 1) {
