@@ -85,11 +85,19 @@ class UserQuizlv extends Component
     public function getNextQuestion()
     {
         //Return a random question from the selectoin selection by the user for quiz.
+        // disabled because having issues with shuffle, it works but in a wierd way.
+
+        // $question = Question::where('section_id', $this->sectionId)
+        //     ->whereNotIn('id', $this->answeredQuestions)
+        //     ->with(['answers' => function ($question) {
+        //         $question->inRandomOrder();
+        //     }])
+        //     ->inRandomOrder()
+        //     ->first();
+
         $question = Question::where('section_id', $this->sectionId)
             ->whereNotIn('id', $this->answeredQuestions)
-            ->with(['answers' => function ($question) {
-                $question->inRandomOrder();
-            }])
+            ->with('answers')
             ->inRandomOrder()
             ->first();
 
