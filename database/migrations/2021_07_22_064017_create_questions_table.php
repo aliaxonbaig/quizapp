@@ -19,7 +19,7 @@ class CreateQuestionsTable extends Migration
             $table->text('explanation');
             $table->enum('is_active', ['0', '1'])->default('1');
             $table->foreignId('section_id')->constrained()->onDelete('cascade');
-            $table->foreignId('user_id')->nullable()->default('1');
+            $table->foreignId('user_id')->constrained()->default(1)->onDelete('set default');
             $table->timestamps();
         });
     }

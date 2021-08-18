@@ -83,7 +83,7 @@ class ManageUserController extends Controller
     public function destroy($id)
     {
         $user = User::findOrFail($id);
-        if ($user->hasRole('admin')) {
+        if ($user->hasRole('super-admin')) {
             return redirect()->back()->withWarning($user->name . ' can\'t be deleted :(');
         }
         $user->delete($id);

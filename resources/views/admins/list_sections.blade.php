@@ -26,8 +26,17 @@
                     <a href="{{route('createSection')}}" class="tracking-wide font-bold rounded border-2 border-blue-500 hover:border-blue-500 bg-blue-500 text-white hover:bg-blue-600 transition shadow-md py-2 px-6 items-center">Create a Section</a>
                     <a href="{{route('adminhome')}}" class="tracking-wide font-bold rounded border-2 border-blue-500 hover:border-blue-500 bg-blue-500 text-white hover:bg-blue-600 transition shadow-md py-2 px-6 items-center">Back</a>
                 </div>
+                @if($sections->isEmpty())
+                <div class="px-4 py-5 sm:px-6">
+                    <h1 class="text-sm leading-6 font-medium text-gray-900">
+                        No Sections found!
+                    </h1>
+                    <p class="mt-1 max-w-2xl text-sm text-gray-500">
+                        Looks like you have just landed! Once you have created any sections, they will be listed here.
+                    </p>
+                </div>
+                @else
                 <!-- --------------------- START NEW TABLE --------------------->
-
                 <div class="flex flex-col">
                     <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                         <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
@@ -101,6 +110,7 @@
                         </div>
                     </div>
                 </div>
+                @endif
                 <!-- ---------------- END NEW TABLE --------------------- -->
             </div>
         </div>
