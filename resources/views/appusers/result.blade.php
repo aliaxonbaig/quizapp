@@ -4,6 +4,7 @@
             {{ __('AppUser Home') }}
         </h2>
     </x-slot>
+
     <div class="max-w-7xl m-4 mx-auto sm:px-6 lg:px-8">
         <div class="bg-white rounded-lg shadow-lg p-5 md:p-20 mx-2">
             <div class="text-center">

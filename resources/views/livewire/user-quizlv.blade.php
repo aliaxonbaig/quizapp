@@ -56,38 +56,57 @@
     <!-- end of quiz box -->
 
     @if($showResult)
-    <div class="bg-indego-100 rounded-lg shadow-lg p-5 md:p-20 mx-2">
-        <div class="text-center">
-            <h2 class="text-2xl tracking-tight leading-10 font-extrabold text-gray-900 md:text-3xl sm:leading-none">
-                Quiz<span class="text-indigo-600 ml-2">Result</span>
-            </h2>
-            <p class="text-md mt-10"> Dear <span class="font-extrabold text-blue-600 mr-2"> {{Auth::user()->name.'!'}} </span> You have secured </p>
-            <div class="justify-center">
-                <progress class="max-w-full mx-auto mr-1" id="quiz-{{$quizid}}" value="{{$quizPecentage}}" max="100"> {{$quizPecentage}} </progress> <span> {{$quizPecentage}}% </span>
+    <section class="text-gray-600 body-font">
+        <div class="bg-white border-2 border-gray-300 shadow overflow-hidden sm:rounded-lg">
+            <div class="container px-5 py-5 mx-auto">
+                <div class="text-center mb-5 justify-center">
+                    <h1 class=" sm:text-3xl text-2xl font-medium text-center title-font text-gray-900 mb-4">Quiz Result</h1>
+                    <p class="text-md mt-10"> Dear <span class="font-extrabold text-blue-600 mr-2"> {{Auth::user()->name.'!'}} </span> You have secured </p>
+                    <progress class="text-base leading-relaxed xl:w-2/4 lg:w-3/4 mx-auto" id="quiz-{{$quizid}}" value="{{$quizPecentage}}" max="100"> {{$quizPecentage}} </progress> <span> {{$quizPecentage}}% </span>
+                </div>
+                <div class="flex flex-wrap lg:w-4/5 sm:mx-auto sm:mb-2 -mx-2">
+                    <div class="p-2 sm:w-1/2 w-full">
+                        <div class="bg-gray-100 rounded flex p-4 h-full items-center">
+                            <svg fill=" none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" class="text-indigo-500 w-6 h-6 flex-shrink-0 mr-4" viewBox="0 0 24 24">
+                                <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
+                                <path d="M22 4L12 14.01l-3-3"></path>
+                            </svg>
+                            <span class="title-font font-medium mr-5 text-purple-700">Correct Answers</span><span class="title-font font-medium">{{$currectQuizAnswers}}</span>
+                        </div>
+                    </div>
+                    <div class="p-2 sm:w-1/2 w-full">
+                        <div class="bg-gray-100 rounded flex p-4 h-full items-center">
+                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" class="text-indigo-500 w-6 h-6 flex-shrink-0 mr-4" viewBox="0 0 24 24">
+                                <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
+                                <path d="M22 4L12 14.01l-3-3"></path>
+                            </svg>
+                            <span class="title-font font-medium mr-5 text-purple-700">Total Questions</span><span class="title-font font-medium">{{$totalQuizQuestions}}</span>
+                        </div>
+                    </div>
+                    <div class="p-2 sm:w-1/2 w-full">
+                        <div class="bg-gray-100 rounded flex p-4 h-full items-center">
+                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" class="text-indigo-500 w-6 h-6 flex-shrink-0 mr-4" viewBox="0 0 24 24">
+                                <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
+                                <path d="M22 4L12 14.01l-3-3"></path>
+                            </svg>
+                            <span class="title-font font-medium mr-5 text-purple-700">Percentage Scored</span><span class="title-font font-medium">{{$quizPecentage.'%'}}</span>
+                        </div>
+                    </div>
+                    <div class="p-2 sm:w-1/2 w-full">
+                        <div class="bg-gray-100 rounded flex p-4 h-full items-center">
+                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" class="text-indigo-500 w-6 h-6 flex-shrink-0 mr-4" viewBox="0 0 24 24">
+                                <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
+                                <path d="M22 4L12 14.01l-3-3"></path>
+                            </svg>
+                            <span class="title-font font-medium mr-5 text-purple-700">Quiz Status</span><span class="title-font font-medium">{{ $quizPecentage > 70 ? 'Pass' : 'Fail' }}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex flex-wrap lg:w-4/5 sm:mx-auto sm:mb-2 -mx-2 justify-end">
+                    <a href="{{route('userQuizHome')}}" class="justify-end text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">See All Your Quizzes</a>
+                </div>
             </div>
         </div>
-        <div class="md:grid grid-cols-3 mt-10 justify-center gap-5">
-            <div class="m-3  min-w-full mx-auto">
-                <p class="bg-white tracking-wide text-gray-800 font-bold rounded border-2 border-blue-500 hover:border-blue-500 hover:bg-blue-500 hover:text-white shadow-md py-2 px-6 items-center">
-                    <span class="mx-auto font-extrabold text-blue-800 pr-2">{{$totalQuizQuestions}}</span><span> Total Questions</span>
-                </p>
-            </div>
-            <div class="m-3  min-w-full mx-auto">
-                <p class="bg-white tracking-wide text-gray-800 font-bold rounded border-2 border-blue-500 hover:border-blue-500 hover:bg-blue-500 hover:text-white shadow-md py-2 px-6 items-center">
-                    <span class="mx-auto font-extrabold text-blue-800 pr-2">{{$currectQuizAnswers}}</span><span> Correct Answers</span>
-                </p>
-            </div>
-            <div class="m-3  min-w-full mx-auto justify-center">
-                <p class="bg-white tracking-wide text-gray-800 font-bold rounded border-2 border-blue-500 hover:border-blue-500 hover:bg-blue-500 hover:text-white shadow-md py-2 px-6 items-center">
-                    <span class="mx-auto font-extrabold text-blue-800 pr-2">{{$quizPecentage}}</span><span> Percentage</span>
-                </p>
-            </div>
-        </div>
-        <div class="m-3 justify-end p-3 mx-auto">
-            <a href="{{route('userQuizHome')}}" class="bg-white tracking-wide text-gray-800 font-bold rounded border-2 border-blue-500 hover:border-blue-500 hover:bg-blue-500 hover:text-white shadow-md py-2 px-6 items-center">
-                View your Quiz Histry
-            </a>
-        </div>
-    </div>
+    </section>
     @endif
 </div>

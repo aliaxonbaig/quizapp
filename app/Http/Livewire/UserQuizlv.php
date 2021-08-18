@@ -50,8 +50,8 @@ class UserQuizlv extends Component
         $this->quizid->save();
 
         // Hide quiz div and show result div wrapped in if statements in the blade template.
-        $this->showResult = true;
         $this->quizInProgress = false;
+        $this->showResult = true;
     }
     public function render()
     {
@@ -60,7 +60,7 @@ class UserQuizlv extends Component
 
     public function updatedUserAnswered()
     {
-        if (empty($this->userAnswered)) {
+        if ((empty($this->userAnswered) || (count($this->userAnswered) > 1))) {
             $this->isDisabled = true;
         } else {
             $this->isDisabled = false;
@@ -84,7 +84,7 @@ class UserQuizlv extends Component
 
     public function getNextQuestion()
     {
-        //Return a random question from the selectoin selection by the user for quiz.
+        //Return a random question from the section selected by the user for quiz.
         // disabled because having issues with shuffle, it works but in a wierd way.
 
         // $question = Question::where('section_id', $this->sectionId)
