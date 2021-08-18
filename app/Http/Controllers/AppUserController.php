@@ -19,8 +19,9 @@ class AppUserController extends Controller
             ->where('is_active', '1')
             ->orderBy('name')
             ->get();
+        $quizesTaken = QuizHeader::count();
 
-        return view('appusers.index', compact('sections', 'activeUsers', 'questionsCount'));
+        return view('appusers.index', compact('sections', 'activeUsers', 'questionsCount', 'quizesTaken'));
     }
 
     public function startQuiz(Request $request)

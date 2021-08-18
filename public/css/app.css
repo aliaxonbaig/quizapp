@@ -1188,10 +1188,13 @@ select {
 	margin-left: -0.5rem;
 	margin-right: -0.5rem;
 }
+<<<<<<< HEAD
 .my-7 {
 	margin-top: 1.75rem;
 	margin-bottom: 1.75rem;
 }
+=======
+>>>>>>> newfeature
 .ml-3 {
 	margin-left: 0.75rem;
 }
