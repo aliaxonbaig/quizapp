@@ -17,9 +17,9 @@ class CreateQuizzesTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('quiz_header_id')->constrained()->onDelete('cascade');
-            $table->foreignId('section_id')->constrained();
-            $table->foreignId('question_id')->constrained();
-            $table->foreignId('answer_id')->constrained();
+            $table->foreignId('section_id')->constrained()->onDelete('cascade');
+            $table->foreignId('question_id')->constrained()->onDelete('cascade');
+            $table->foreignId('answer_id')->constrained()->onDelete('cascade');
             $table->enum('is_correct', [0, 1])->default(0);
             $table->timestamps();
         });

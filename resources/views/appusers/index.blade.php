@@ -59,11 +59,15 @@
                     <h2 class="text-gray-900 text-lg font-medium title-font mb-5">Take a Quiz</h2>
                     <div class="relative mx-full mb-4">
                         <select name="section" class="block w-full mt-1 rounded-md bg-gray-100 border-2 border-gray-500 focus:bg-white focus:ring-0">
+                            @if($sections->isEmpty())
+                            <option value="">No Quiz Sections Available Yet</option>
+                            @else
                             @foreach($sections as $section)
                             @if($section->questions_count>0)
                             <option value="{{$section->id}}">{{$section->name}}</option>
                             @endif
                             @endforeach
+                            @endif
                         </select>
                     </div>
                     <div class="relative mb-4">
