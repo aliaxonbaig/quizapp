@@ -1337,6 +1337,9 @@ select {
 .h-3 {
 	height: 0.75rem;
 }
+.h-1 {
+	height: 0.25rem;
+}
 .min-h-screen {
 	min-height: 100vh;
 }
@@ -1862,6 +1865,10 @@ select {
 .px-8 {
 	padding-left: 2rem;
 	padding-right: 2rem;
+}
+.py-24 {
+	padding-top: 6rem;
+	padding-bottom: 6rem;
 }
 .pt-6 {
 	padding-top: 1.5rem;
@@ -2789,6 +2796,10 @@ select {
 @media (min-width: 1280px) {
 
 	.xl\:w-2\/4 {
+		width: 50%;
+	}
+
+	.xl\:w-1\/2 {
 		width: 50%;
 	}
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Quiz;
 use App\Models\User;
+use App\Models\Quote;
 use App\Models\Section;
 use App\Models\Question;
 use App\Models\QuizHeader;
@@ -20,8 +21,9 @@ class AppUserController extends Controller
             ->orderBy('name')
             ->get();
         $quizesTaken = QuizHeader::count();
+        $quote = Quote::inRandomOrder()->first();
 
-        return view('appusers.index', compact('sections', 'activeUsers', 'questionsCount', 'quizesTaken'));
+        return view('appusers.index', compact('sections', 'activeUsers', 'questionsCount', 'quizesTaken', 'quote'));
     }
 
     public function startQuiz(Request $request)
