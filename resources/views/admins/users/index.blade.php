@@ -57,7 +57,7 @@
                                 @endforeach
                             </dd>
                             <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-1">
-                                <div class="flex m-1 justify-end items-center">
+                                <div class="flex justify-end items-center">
                                     <a href="#" class="text-green-500 hover:text-green-700">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="text-blue-500 hover:text-blue-700 h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                                             <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clip-rule="evenodd" />
