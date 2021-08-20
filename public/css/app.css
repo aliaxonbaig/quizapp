@@ -1280,6 +1280,12 @@ select {
 .mb-3 {
 	margin-bottom: 0.75rem;
 }
+.mb-12 {
+	margin-bottom: 3rem;
+}
+.mb-1 {
+	margin-bottom: 0.25rem;
+}
 .block {
 	display: block;
 }
@@ -1423,6 +1429,9 @@ select {
 }
 .flex-shrink-0 {
 	flex-shrink: 0;
+}
+.flex-grow {
+	flex-grow: 1;
 }
 .origin-top-left {
 	transform-origin: top left;
@@ -1778,6 +1787,10 @@ select {
 	-o-object-fit: cover;
 	   object-fit: cover;
 }
+.object-center {
+	-o-object-position: center;
+	   object-position: center;
+}
 .p-2 {
 	padding: 0.5rem;
 }
@@ -1909,6 +1922,9 @@ select {
 .pr-2 {
 	padding-right: 0.5rem;
 }
+.pl-4 {
+	padding-left: 1rem;
+}
 .text-left {
 	text-align: left;
 }
@@ -1950,6 +1966,10 @@ select {
 .text-xl {
 	font-size: 1.25rem;
 	line-height: 1.75rem;
+}
+.text-3xl {
+	font-size: 1.875rem;
+	line-height: 2.25rem;
 }
 .font-medium {
 	font-weight: 500;
