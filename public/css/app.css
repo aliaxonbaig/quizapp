@@ -1156,6 +1156,9 @@ select {
 .-m-4 {
 	margin: -1rem;
 }
+.m-2 {
+	margin: 0.5rem;
+}
 .mx-auto {
 	margin-left: auto;
 	margin-right: auto;
@@ -2752,6 +2755,14 @@ select {
 		grid-template-columns: repeat(2, minmax(0, 1fr));
 	}
 
+	.md\:flex-wrap {
+		flex-wrap: wrap;
+	}
+
+	.md\:justify-between {
+		justify-content: space-between;
+	}
+
 	.md\:gap-6 {
 		gap: 1.5rem;
 	}
@@ -2786,6 +2797,10 @@ select {
 	.lg\:-mx-8 {
 		margin-left: -2rem;
 		margin-right: -2rem;
+	}
+
+	.lg\:flex {
+		display: flex;
 	}
 
 	.lg\:w-3\/4 {

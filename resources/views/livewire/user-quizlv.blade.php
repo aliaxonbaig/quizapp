@@ -61,7 +61,7 @@
             <div class="container px-5 py-5 mx-auto">
                 <div class="text-center mb-5 justify-center">
                     <h1 class=" sm:text-3xl text-2xl font-medium text-center title-font text-gray-900 mb-4">Quiz Result</h1>
-                    <p class="text-md mt-10"> Dear <span class="font-extrabold text-blue-600 mr-2"> {{Auth::user()->name.'!'}} </span> You have secured </p>
+                    <p class="text-md mt-10"> Dear <span class="font-extrabold text-blue-600 mr-2"> {{Auth::user()->name.'!'}} </span> You have secured <a class="bg-green-300 px-2 mx-2 hover:green-400 rounded-lg underline" href="{{route('userQuizDetails',$quizid) }}">Show quiz details</a></p>
                     <progress class="text-base leading-relaxed xl:w-2/4 lg:w-3/4 mx-auto" id="quiz-{{$quizid}}" value="{{$quizPecentage}}" max="100"> {{$quizPecentage}} </progress> <span> {{$quizPecentage}}% </span>
                 </div>
                 <div class="flex flex-wrap lg:w-4/5 sm:mx-auto sm:mb-2 -mx-2">
@@ -102,8 +102,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="flex flex-wrap lg:w-4/5 sm:mx-auto sm:mb-2 -mx-2 justify-end">
-                    <a href="{{route('userQuizHome')}}" class="justify-end text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">See All Your Quizzes</a>
+                <div class="mx-auto min-w-full p-2 md:flex m-2 justify-between">
+                    <a href="{{route('userQuizDetails',$quizid) }}" class="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">See Quizzes Deatils</a>
+                    <a href="{{route('userQuizHome')}}" class="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">See All Your Quizzes</a>
                 </div>
             </div>
         </div>
