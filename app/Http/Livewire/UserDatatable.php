@@ -10,7 +10,7 @@ class UserDatatable extends Component
 {
     use WithPagination;
     public $message = '';
-    public $perPage = 10;
+    public $perPage = 15;
     public $search = '';
     public $orderBy = 'id';
     public $orderAsc = true;
