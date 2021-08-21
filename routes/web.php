@@ -30,7 +30,9 @@ Route::middleware(['auth', 'verified', 'role:user|admin'])->group(
 );
 Route::middleware(['auth', 'verified', 'role:admin'])->prefix('admin')->group(function () {
 
-    Route::resource('users', ManageUserController::class);
+    //Route::resource('users', ManageUserController::class);
+
+    Route::get('/users', [ManageUserController::class, 'index'])->name('usersIndex');
 
     Route::get('/adminhome', [AdminController::class, 'adminhome'])->name('adminhome');
 

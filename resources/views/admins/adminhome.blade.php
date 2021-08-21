@@ -19,7 +19,7 @@
                     </a>
                 </div>
                 <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
-                    <a href="{{route('users.index')}}">
+                    <a href="{{route('usersIndex')}}">
                         <div class="border-2 border-gray-200 px-4 py-6 rounded-lg">
                             <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="text-indigo-500 w-12 h-12 mb-3 inline-block" viewBox="0 0 24 24">
                                 <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"></path>
@@ -75,7 +75,7 @@
                     </div>
                 </a>
                 <!-- Card -->
-                <a href="{{route('users.index')}}">
+                <a href="{{route('usersIndex')}}">
                     <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800 hover:bg-green-100">
                         <div class=" p-3 mr-4 text-orange-500 bg-orange-100 rounded-full dark:text-orange-100 dark:bg-orange-500">
                             <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="text-indigo-500 w-12 h-12 mb-3 inline-block" viewBox="0 0 24 24">
