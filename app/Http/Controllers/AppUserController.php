@@ -26,23 +26,30 @@ class AppUserController extends Controller
         return view('appusers.index', compact('sections', 'activeUsers', 'questionsCount', 'quizesTaken', 'quote'));
     }
 
-    public function startQuiz(Request $request)
+    public function startQuiz()
     {
-        $request->validate([
-            'section' => 'required',
-            'quizSize' => 'required|numeric'
-        ]);
-        $sectionId = $request->section;
-        $quizSize = $request->quizSize;
+        // $request->validate([
+        //     'section' => 'required',
+        //     'quizSize' => 'required|numeric'
+        // ]);
+        // $sectionId = $request->section;
+        // $quizSize = $request->quizSize;
 
-        return view('appusers.quiz', compact('sectionId', 'quizSize'));
+        return view('appusers.quiz');
     }
 
     public function userQuizHome()
     {
+        $activeUsers = User::count();
+        $questionsCount = Question::where('is_active', '1')->count();
+        $sections = Section::withCount('questions')
+            ->where('is_active', '1')
+            ->orderBy('name')
+            ->get();
+        $quizesTaken = QuizHeader::count();
         $userQuizzes = auth()->user()->quizHeaders()->orderBy('id', 'desc')->paginate(10);
         $quizAverage = auth()->user()->quizHeaders()->avg('score');
-        return view('appusers.userQuizHome', compact('userQuizzes', 'quizAverage'));
+        return view('appusers.userQuizHome', compact('sections', 'activeUsers', 'questionsCount', 'quizesTaken', 'userQuizzes', 'quizAverage'));
     }
 
 

@@ -21,7 +21,7 @@
                     </x-jet-nav-link>
                     @endhasrole
                     @hasrole('user|admin|superadmin')
-                    <x-jet-nav-link href="{{ route('appuserIndex') }}" :active="request()->routeIs('appuserIndex')">
+                    <x-jet-nav-link href="{{ route('startQuiz') }}" :active="request()->routeIs('startQuiz')">
                         {{ __('Take Quiz') }}
                     </x-jet-nav-link>
                     <x-jet-nav-link href="{{ route('userQuizHome') }}" :active="request()->routeIs('userQuizHome')">

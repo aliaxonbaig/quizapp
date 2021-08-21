@@ -3,26 +3,37 @@
 namespace App\Http\Livewire;
 
 use App\Models\Quiz;
+use App\Models\Quote;
+use App\Models\Section;
 use Livewire\Component;
 use App\Models\Question;
 use App\Models\QuizHeader;
 
 class UserQuizlv extends Component
 {
+    public $quote;
     public $quizid;
-    public $quizSize;
+    public $sections;
     public $count = 0;
     public $sectionId;
+    public $quizSize = 1;
     public $quizPecentage;
     public $currentQuestion;
+    public $setupQuiz = true;
     public $isDisabled = true;
     public $userAnswered = [];
     public $showResult = false;
     public $currectQuizAnswers;
     public $totalQuizQuestions;
-    public $learningMode = true;
-    public $quizInProgress = true;
+    public $learningMode = false;
     public $answeredQuestions = [];
+    public $quizInProgress = false;
+
+    protected $rules = [
+        'sectionId' => 'required',
+        'quizSize' => 'required|numeric',
+    ];
+
 
     public function showResults()
     {
@@ -55,6 +66,10 @@ class UserQuizlv extends Component
     }
     public function render()
     {
+        $this->sections = Section::withcount('questions')->where('is_active', '1')
+            ->orderBy('name')
+            ->get();
+
         return view('livewire.user-quizlv');
     }
 
@@ -69,17 +84,7 @@ class UserQuizlv extends Component
 
     public function mount()
     {
-        // Create a new quiz header in quiz_headers table and populate initial quiz information
-        // Keep the instance in $this->quizid veriable for later updates to quiz.
-        $this->quizid = QuizHeader::create([
-            'user_id' => auth()->id(),
-            'quiz_size' => $this->quizSize,
-            'section_id' => $this->sectionId,
-        ]);
-        $this->count = 1;
-        // Get the first/next question for the quiz.
-        // Since we are using LiveWire component for quiz, the first quesiton and answers will be displayed through mount function.
-        $this->currentQuestion = $this->getNextQuestion();
+        $this->quote = Quote::inRandomOrder()->first();
     }
 
     public function getNextQuestion()
@@ -109,11 +114,29 @@ class UserQuizlv extends Component
             $this->quizid->save();
             return $this->showResults();
         }
-
         //Update the questions taken array so that we don't repeat same question again in the quiz
         //We feed this array into whereNotIn chain in getNextquestion() function.
         array_push($this->answeredQuestions, $question->id);
         return $question;
+    }
+
+    public function startQuiz()
+    {
+
+        // Create a new quiz header in quiz_headers table and populate initial quiz information
+        // Keep the instance in $this->quizid veriable for later updates to quiz.
+        $this->validate();
+        $this->quizid = QuizHeader::create([
+            'user_id' => auth()->id(),
+            'quiz_size' => $this->quizSize,
+            'section_id' => $this->sectionId,
+        ]);
+        $this->count = 1;
+        // Get the first/next question for the quiz.
+        // Since we are using LiveWire component for quiz, the first quesiton and answers will be displayed through mount function.
+        $this->currentQuestion = $this->getNextQuestion();
+        $this->setupQuiz = false;
+        $this->quizInProgress = true;
     }
 
     public function nextQuestion()
