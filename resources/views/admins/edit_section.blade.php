@@ -8,11 +8,6 @@
         <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
             <div class="mx-auto bg-gray-100">
                 <h2 class="text-2xl font-bold card bg-green-600 p-4 text-gray-100 rounded-t-lg mx-auto">New Section</h2>
-                @if(Session::has('message'))
-                <h1 class="text-xs font-bold card bg-green-400 p-2 -mb-2 text-green-50">
-                    {{session::get('message')}}
-                </h1>
-                @endif
                 <div class="mt-2 max-w-auto mx-auto card p-4 bg-white rounded-b-lg shadow-md">
                     <div class="grid grid-cols-1 gap-6">
                         <form action="{{route('updateSection', $section->id)}}" method="post">

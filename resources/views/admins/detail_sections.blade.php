@@ -4,18 +4,6 @@
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 {{ __('Section Details') }}
             </h2>
-
-            @if(Session::has('success'))
-            <span>
-                <h1 class="text-medium font-bold rounded-xl bg-green-400 px-2 text-white">
-                    {{session::get('success')}}
-                </h1>
-                @elseif(Session::has('warning'))
-                <h1 class="text-xs font-bold card bg-red-400  px-2 text-gray-500">
-                    {{session::get('warning')}}
-                </h1>
-            </span>
-            @endif
         </div>
     </x-slot>
     <div class="max-w-7xl m-4 mx-auto sm:px-6 lg:px-8">

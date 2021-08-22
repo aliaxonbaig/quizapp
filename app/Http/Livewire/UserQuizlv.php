@@ -20,14 +20,14 @@ class UserQuizlv extends Component
     public $quizPecentage;
     public $currentQuestion;
     public $setupQuiz = true;
-    public $isDisabled = true;
     public $userAnswered = [];
-    public $showResult = false;
+    public $isDisabled = true;
     public $currectQuizAnswers;
+    public $showResult = false;
     public $totalQuizQuestions;
     public $learningMode = false;
-    public $answeredQuestions = [];
     public $quizInProgress = false;
+    public $answeredQuestions = [];
 
     protected $rules = [
         'sectionId' => 'required',

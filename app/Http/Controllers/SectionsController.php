@@ -27,7 +27,7 @@ class SectionsController extends Controller
             'section.*' => 'required',
         ]);
         auth()->user()->sections()->createMany($data);
-        return redirect()->back()->with('message', 'Section saved successfully!');
+        return redirect()->route('listSection')->with('success', 'Section created successfully!');
     }
 
     public function editSection(Section $section)
@@ -46,7 +46,7 @@ class SectionsController extends Controller
         $record = Section::findOrFail($section->id);
         $input = $request->all();
         $record->fill($input)->save();
-        $request->session()->flash('success', 'Section saved successfully!');
+        session()->flash('success', 'Section saved successfully!');
         return redirect()->route('listSection');
     }
 

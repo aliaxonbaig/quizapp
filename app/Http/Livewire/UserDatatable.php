@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use App\Models\User;
 use Livewire\Component;
 use Livewire\WithPagination;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class UserDatatable extends Component
 {
@@ -32,6 +33,6 @@ class UserDatatable extends Component
             return false;
         }
         $user->delete($id);
-        session()->flash('success', 'User deleted successfully!');
+        session()->flash('success', 'User Deleted successfully!');
     }
 }

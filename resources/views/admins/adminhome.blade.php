@@ -130,5 +130,4 @@
             </div>
         </div>
     </section>
-
 </x-app-layout>

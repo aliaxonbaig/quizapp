@@ -45,7 +45,7 @@ class QuestionsController extends Controller
 
         $status = $question->answers()->createMany($data['answers'])->push();
         return redirect()->route('detailSection', $section->id)
-            ->withSuccess('Questin created successfully');;
+            ->withSuccess('Question created successfully');;
     }
 
     function deleteQuestion($id)

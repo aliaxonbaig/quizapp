@@ -14,6 +14,7 @@
         "laravel/sanctum": "^2.6",
         "laravel/tinker": "^2.5",
         "livewire/livewire": "^2.5",
+        "realrashid/sweet-alert": "^4.0",
         "spatie/laravel-permission": "^4.2"
     },
     "require-dev": {
