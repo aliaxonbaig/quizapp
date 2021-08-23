@@ -1,5 +1,4 @@
-![image](https://user-images.githubusercontent.com/52659978/128609195-b167f104-2b17-4002-ad62-e29b07dd0f86.png)
-
+![image](https://user-images.githubusercontent.com/52659978/130503199-4974582b-511c-4306-8c6c-2354c95b0c11.png)
 
 ## QuizApp
 A laravel based QuizApp
