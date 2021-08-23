@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Carbon\Carbon;
 use Illuminate\Support\ServiceProvider;
+use ConsoleTVs\Charts\Registrar as Charts;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -22,7 +23,7 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(Charts $charts)
     {
         // Carbon::macro('isDayOff', function ($date) {
         //     return $date->isFriday() || $date->isSaturday();
@@ -30,5 +31,8 @@ class AppServiceProvider extends ServiceProvider
         // Carbon::macro('isNotDayOff', function ($date) {
         //     return !$date->isDayOff();
         // });
+        $charts->register([
+            \App\Charts\UserQuiz::class,
+        ]);
     }
 }

@@ -58,6 +58,14 @@
                         </div>
                     </div>
                 </section>
+
+                <section class="text-gray-600 body-font">
+                    <div class="p-4 md:w-2/4 sm:w-1/2 h-full w-full">
+                        <div class="container px-5 py-5 mx-auto" id="chart">
+                        </div>
+                    </div>
+
+                </section>
                 <!-- --------------------- START NEW TABLE --------------------->
                 @if($userQuizzes->isEmpty())
                 <div class="px-4 py-5 sm:px-6">
@@ -149,4 +157,26 @@
             </div>
         </div>
     </div>
+    @push('js')
+    <script>
+        const chart = new Chartisan({
+            el: '#chart',
+            url: "@chart('user_quiz')",
+            loader: {
+                color: '#ff00ff',
+                size: [60, 60],
+                type: 'bar',
+                textColor: '#ffff00',
+                text: 'Loading some chart data...',
+            },
+            hooks: new ChartisanHooks()
+                .colors()
+                .beginAtZero()
+                .title('Quiz Scores')
+                .datasets(['line'])
+                .stepSize(20)
+                .responsive()
+        });
+    </script>
+    @endpush
 </x-app-layout>
