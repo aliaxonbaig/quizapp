@@ -60,7 +60,7 @@
                 </section>
 
                 <section class="text-gray-600 body-font">
-                    <div class="p-4 md:w-2/4 sm:w-1/2 h-full w-full">
+                    <div class="p-4 w-full">
                         <div class="container px-5 py-5 mx-auto" id="chart">
                         </div>
                     </div>
@@ -174,7 +174,7 @@
                 .beginAtZero()
                 .title('Quiz Scores')
                 .datasets(['line'])
-                .stepSize(20)
+                .stepSize(25)
                 .responsive()
         });
     </script>
