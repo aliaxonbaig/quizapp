@@ -1,4 +1,4 @@
-## Today
+## Todo
 ```
 Currently busy with some other important things, will definately would like to imporove the app with
 1. Multiple choices selection and mapping to detail results
@@ -10,7 +10,7 @@ Currently busy with some other important things, will definately would like to i
 
 
 
-Pull reqeusts are welcome.
+Pull reqeusts are welcome, acceptance will depend on availability of time to review the pull requests.
 
 ```
 
