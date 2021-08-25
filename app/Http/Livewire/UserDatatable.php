@@ -9,6 +9,8 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class UserDatatable extends Component
 {
+    #Majority of code taken with gratitude from 
+    # https://github.com/davidgrzyb/laravel-livewire-datatable-example
     use WithPagination;
     public $message = '';
     public $perPage = 15;
