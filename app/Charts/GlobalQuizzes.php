@@ -32,6 +32,6 @@ class GlobalQuizzes extends BaseChart
 
         return Chartisan::build()
             ->labels($ids)
-            ->dataset('Score', $scores);
+            ->dataset('Global Quiz Stats', $scores);
     }
 }
