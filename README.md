@@ -24,10 +24,10 @@ cp .env.example .env
 php artisan migrate:fresh --seed
 ```
 
-
-## Username: adminadmin@admin.com / admin@admin.com
-## Password: adminadmin
-
+```
+Username: adminadmin@admin.com / admin@admin.com
+Password: adminadmin
+```
 
 ## License
 
