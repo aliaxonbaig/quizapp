@@ -25,14 +25,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(Charts $charts)
     {
-        // Carbon::macro('isDayOff', function ($date) {
-        //     return $date->isFriday() || $date->isSaturday();
-        // });
-        // Carbon::macro('isNotDayOff', function ($date) {
-        //     return !$date->isDayOff();
-        // });
         $charts->register([
             \App\Charts\UserQuiz::class,
+            \App\Charts\GlobalQuizzes::class,
+            \App\Charts\MonthlyUsers::class,
         ]);
     }
 }

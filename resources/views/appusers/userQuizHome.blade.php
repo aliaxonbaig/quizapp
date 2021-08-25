@@ -64,7 +64,6 @@
                         <div class="container px-5 py-5 mx-auto" id="chart">
                         </div>
                     </div>
-
                 </section>
                 <!-- --------------------- START NEW TABLE --------------------->
                 @if($userQuizzes->isEmpty())

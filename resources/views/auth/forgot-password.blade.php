@@ -9,9 +9,9 @@
         </div>
 
         @if (session('status'))
-            <div class="mb-4 font-medium text-sm text-green-600">
-                {{ session('status') }}
-            </div>
+        <div class="mb-4 font-medium text-sm text-green-600">
+            {{ session('status') }}
+        </div>
         @endif
 
         <x-jet-validation-errors class="mb-4" />
@@ -25,6 +25,9 @@
             </div>
 
             <div class="flex items-center justify-end mt-4">
+                @if (Route::has('login'))
+                <a href="{{ route('login') }}" class="ml-4 text-sm text-gray-700 underline mx-2">Login? </a>
+                @endif
                 <x-jet-button>
                     {{ __('Email Password Reset Link') }}
                 </x-jet-button>

@@ -20,14 +20,8 @@ use App\Http\Controllers\QuestionsController;
 
 Route::get('/', function () {
     return view('welcome');
-});
-Route::middleware(['auth', 'verified', 'role:user|admin'])->group(
-    function () {
-        Route::get('/dashboard', function () {
-            return view('dashboard');
-        })->name('dashboard');
-    }
-);
+})->name('welcome');
+
 Route::middleware(['auth', 'verified', 'role:admin'])->prefix('admin')->group(function () {
 
     //Route::resource('users', ManageUserController::class);

@@ -5,16 +5,13 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
+                    <a href="{{ route('welcome') }}">
                         <x-jet-application-mark class="block h-9 w-auto" />
                     </a>
                 </div>
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
-                    </x-jet-nav-link>
                     @hasrole('admin')
                     <x-jet-nav-link href="{{ route('adminhome') }}" :active="request()->routeIs('adminhome')">
                         {{ __('Admin Home') }}
@@ -150,15 +147,19 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-jet-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
-            </x-jet-responsive-nav-link>
             @hasrole('admin')
             <x-jet-responsive-nav-link href="{{ route('adminhome') }}" :active="request()->routeIs('adminhome')">
                 {{ __('Admin Home') }}
             </x-jet-responsive-nav-link>
             @endhasrole
-
+            @hasrole('user|admin|superadmin')
+            <x-jet-responsive-nav-link href="{{ route('startQuiz') }}" :active="request()->routeIs('startQuiz')">
+                {{ __('Take Quiz') }}
+            </x-jet-responsive-nav-link>
+            <x-jet-responsive-nav-link href="{{ route('userQuizHome') }}" :active="request()->routeIs('userQuizHome')">
+                {{ __('User Quiz Home') }}
+            </x-jet-responsive-nav-link>
+            @endhasrole
         </div>
 
         <!-- Responsive Settings Options -->
