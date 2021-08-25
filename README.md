@@ -1,16 +1,15 @@
 ## User Quiz Home
-![image](https://user-images.githubusercontent.com/52659978/130801278-7ee434ea-ca0d-44ff-8c73-50fd963ed6d6.png)
-
+![image](https://user-images.githubusercontent.com/52659978/130816735-6e881068-360d-4930-8d1b-333f9055719a.png)
 
 ## Start A Quiz
-![image](https://user-images.githubusercontent.com/52659978/130801387-22b403d4-7bbf-4381-bf12-1c5270062582.png)
+![image](https://user-images.githubusercontent.com/52659978/130816837-77995e62-a1c3-4f58-8f1a-d43f76fd8f69.png)
 
 ## Quiz Screen
-![image](https://user-images.githubusercontent.com/52659978/130801869-38af41b2-00f8-42ab-a8dc-e642c820b97e.png)
+![image](https://user-images.githubusercontent.com/52659978/130816969-3025d9bf-3960-4b1e-a404-03971ab62d58.png)
 
 
 ## Quiz Details
-![image](https://user-images.githubusercontent.com/52659978/130801695-83f96109-e409-4694-9df0-3aa484e781a7.png)
+![image](https://user-images.githubusercontent.com/52659978/130817166-73e83d99-d2ae-4bcb-8f03-cfa2b7c11491.png)
 
 ## QuizApp
 A laravel based QuizApp
@@ -26,8 +25,8 @@ php artisan migrate:fresh --seed
 ```
 
 
-##Username: adminadmin@admin.com
-##Password: adminadmin
+## Username: adminadmin@admin.com / admin@admin.com
+## Password: adminadmin
 
 
 ## License
