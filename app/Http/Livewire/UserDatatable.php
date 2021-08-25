@@ -30,7 +30,7 @@ class UserDatatable extends Component
     public function deleteUser($id)
     {
         $user = User::findOrFail($id);
-        if ($user->hasRole('super-admin')) {
+        if ($user->hasRole('super-admin') || $user->hasRole('admin')) {
             session()->flash('warning', 'Super-admin user can\'t be deleted :(');
             return false;
         }
