@@ -30,6 +30,8 @@ Route::middleware(['auth', 'verified', 'role:admin'])->prefix('admin')->group(fu
 
     Route::get('/adminhome', [AdminController::class, 'adminhome'])->name('adminhome');
 
+    Route::get('/globalQuizzes', [AdminController::class, 'globalQuizzes'])->name('globalQuizzes');
+
     Route::get('/createSection', [SectionsController::class, 'createSection'])
         ->name('createSection');
 
