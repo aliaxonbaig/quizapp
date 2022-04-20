@@ -50,7 +50,7 @@ php artisan key:generate
 ```
 Login with below users and create some Sections->Questions 
 
-Username: adminadmin@admin.com / admin@admin.com
+Username: superadmin@admin.com / admin@admin.com
 Password: adminadmin
 ```
 
