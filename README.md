@@ -43,6 +43,11 @@ sail npm run dev #should be kept open if using local dev env
 
 http://localhost/admin/
 
+
+# Login to user:
+http://localhost/member/
+
+
 * Edit the admin user and set is_admin to yes on edit form and save -- this will enable switching between user and admin roles for admin from profile menu:
 
 ![Screenshot from 2024-02-24 20-17-47](https://github.com/aliaxonbaig/quizapp/assets/52659978/3279ca12-a1c7-443a-9372-c7849cc8e516)
