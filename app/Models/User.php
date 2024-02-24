@@ -17,7 +17,7 @@ use Jeffgreco13\FilamentBreezy\Traits\TwoFactorAuthenticatable;
 use Filament\Models\Contracts\HasName;
 use Illuminate\Support\Facades\Storage;
 
-class User extends Authenticatable implements FilamentUser, MustVerifyEmail, HasAvatar
+class User extends Authenticatable implements FilamentUser, HasAvatar
 {
     use HasApiTokens, HasFactory, Notifiable, HasRoles, TwoFactorAuthenticatable;
 
@@ -62,7 +62,7 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail, Has
 
         return match($panelGetId) {
             'admin' => (auth()->user()->hasRole(['super_admin']) &&
-                        // auth()->user()->email == 'salman@baig.com'  &&
+                        // auth()->user()->email == 'youradminemail@somemail.com'  &&
                         // auth()->user()->is_admin &&
                         auth()->user()->is_active
                     ),
