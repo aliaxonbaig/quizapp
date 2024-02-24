@@ -2,33 +2,23 @@
 
 namespace App\Providers;
 
-use Carbon\Carbon;
 use Illuminate\Support\ServiceProvider;
-use ConsoleTVs\Charts\Registrar as Charts;
 
 class AppServiceProvider extends ServiceProvider
 {
     /**
      * Register any application services.
-     *
-     * @return void
      */
-    public function register()
+    public function register(): void
     {
         //
     }
 
     /**
      * Bootstrap any application services.
-     *
-     * @return void
      */
-    public function boot(Charts $charts)
+    public function boot(): void
     {
-        $charts->register([
-            \App\Charts\UserQuiz::class,
-            \App\Charts\GlobalQuizzes::class,
-            \App\Charts\MonthlyUsers::class,
-        ]);
+        //
     }
 }

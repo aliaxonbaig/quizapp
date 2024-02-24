@@ -2,86 +2,108 @@
 
 namespace App\Models;
 
+use Filament\Models\Contracts\HasAvatar;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Laravel\Fortify\TwoFactorAuthenticatable;
-use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
-use Spatie\Permission\Traits\HasPermissions;
+use Filament\Models\Contracts\FilamentUser;
+use Filament\Panel;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Spatie\Permission\Traits\HasRoles;
+use Jeffgreco13\FilamentBreezy\Traits\TwoFactorAuthenticatable;
+use Filament\Models\Contracts\HasName;
+use Illuminate\Support\Facades\Storage;
 
-class User extends Authenticatable
+class User extends Authenticatable implements FilamentUser, MustVerifyEmail, HasAvatar
 {
-    use HasApiTokens;
-    use HasFactory;
-    use HasProfilePhoto;
-    use Notifiable;
-    use TwoFactorAuthenticatable;
-    use HasPermissions;
-    use HasRoles;
+    use HasApiTokens, HasFactory, Notifiable, HasRoles, TwoFactorAuthenticatable;
+
     /**
      * The attributes that are mass assignable.
      *
-     * @var array
+     * @var array<int, string>
      */
     protected $fillable = [
         'name',
         'email',
         'password',
+        'is_admin',
+        'is_active',
+        'email_verified_at',
+        'avatar_url',
     ];
 
     /**
-     * The attributes that should be hidden for arrays.
+     * The attributes that should be hidden for serialization.
      *
-     * @var array
+     * @var array<int, string>
      */
     protected $hidden = [
         'password',
         'remember_token',
-        'two_factor_recovery_codes',
-        'two_factor_secret',
     ];
 
     /**
-     * The attributes that should be cast to native types.
+     * The attributes that should be cast.
      *
-     * @var array
+     * @var array<string, string>
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'password' => 'hashed',
     ];
 
-    /**
-     * The accessors to append to the model's array form.
-     *
-     * @var array
-     */
-    protected $appends = [
-        'profile_photo_url',
-    ];
-
-    public function sections()
+    public function canAccessPanel(Panel $panel): bool
     {
+        $panelGetId = $panel->getId();
+
+        return match($panelGetId) {
+            'admin' => (auth()->user()->hasRole(['super_admin']) &&
+                        // auth()->user()->email == 'salman@baig.com'  &&
+                        // auth()->user()->is_admin &&
+                        auth()->user()->is_active
+                    ),
+            'member' => (auth()->user()->hasAnyRole(['super_admin|user']) &&
+                         auth()->user()->is_active
+                        ),
+        };
+
+    }
+
+    public function getFilamentAvatarUrl(): ?string
+    {
+        return $this->avatar_url ? Storage::url($this->avatar_url) : null ;
+    }
+
+
+
+    public function sections(): HasMany {
         return $this->hasMany(Section::class);
     }
 
-    public function questions()
-    {
-        return $this->hasManyThrough(Question::class, Section::class);
+    public function quotes(): HasMany {
+        return $this->hasMany(Section::class);
     }
 
-    public function quizHeaders()
-    {
+    public function certifications(): HasMany {
+        return $this->hasMany(Section::class);
+    }
+
+    public function domains(): HasMany {
+        return $this->hasMany(Section::class);
+    }
+    public function quizHeaders(): HasMany {
         return $this->hasMany(QuizHeader::class);
     }
 
-    public static function search($search)
-    {
-        return empty($search) ? static::query()
-            : static::query()->where('id', 'like', '%' . $search . '%')
-            ->orWhere('name', 'like', '%' . $search . '%')
-            ->orWhere('email', 'like', '%' . $search . '%');
+    public function sections_owned(): BelongsToMany {
+        return $this->belongsToMany(Section::class);
+    }
+
+    public function certifications_owned(): BelongsToMany {
+        return $this->belongsToMany(Certification::class);
     }
 }

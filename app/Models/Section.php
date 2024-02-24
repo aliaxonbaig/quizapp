@@ -4,29 +4,47 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\Image\Manipulations;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-class Section extends Model
+class Section extends Model implements HasMedia
 {
     use HasFactory;
+    use InteractsWithMedia;
+
     protected $fillable = [
         'name',
         'description',
-        'is_active',
         'details',
+        'user_id',
+        'is_active',
+        'created_at',
+        'updated_at',
     ];
 
-    public function user()
-    {
+    public function user(): BelongsTo {
         return $this->belongsTo(User::class);
     }
 
-    public function questions()
-    {
-        return $this->hasMany(Question::class);
+
+    public function users(): BelongsToMany {
+        return $this->belongsToMany(User::class);
     }
 
-    public function quizHeaders()
+    public function certifications(): HasMany{
+        return $this->hasMany(Certification::class);
+    }
+
+    public function registerMediaConversions(Media $media = null): void
     {
-        return $this->hasMany(QuizHeader::class);
+        $this
+            ->addMediaConversion('preview')
+            ->fit(Manipulations::FIT_CROP, 300, 300)
+            ->nonQueued();
     }
 }
