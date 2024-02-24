@@ -9,6 +9,9 @@ A fully functional quiz application developed on TALL stack and filamentphp3.
 ## Clone the master repo
 ```
 git clone <repo>
+cd <repo>
+alias sail=./vendor/bin/sail
+
 ```
 
 
