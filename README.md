@@ -8,11 +8,16 @@ A fully functional quiz application developed on TALL stack and filamentphp3.
 
 git clone <repo>
 
+
 cp .env.example .env
+composer install
 
 sail up -d
+
 sail npm install
+
 sail npm run build
+
 sail npm run dev #should be kept open if using local dev env
 
 sail artisan migrate:fresh
