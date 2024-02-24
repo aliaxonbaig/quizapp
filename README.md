@@ -13,10 +13,15 @@ cp .env.example .env
 sail up -d
 
 sail artisan migrate:fresh
+
 sail artisan make:filament-user
+
 sail artisan db:seed
+
 sail artisan shield:super-admin
+
 sail artisan db:seed --class ShieldSeeder
+
 
 
 ## Screenshots
