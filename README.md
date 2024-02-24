@@ -4,10 +4,15 @@
 A fully functional quiz application developed on TALL stack and filamentphp3.
 
 
-## Setup
+### Setup
 
+## Clone the master repo
+```
 git clone <repo>
+```
 
+
+## Execute initial setup and seeding.
 
 cp .env.example .env
 
@@ -19,8 +24,6 @@ sail npm install
 
 sail npm run build
 
-sail npm run dev #should be kept open if using local dev env
-
 sail artisan migrate:fresh
 
 sail artisan make:filament-user
@@ -30,6 +33,21 @@ sail artisan db:seed
 sail artisan shield:super-admin
 
 sail artisan db:seed --class ShieldSeeder
+
+
+sail npm run dev #should be kept open if using local dev env
+
+# Loing to admin:
+
+http://localhost/admin/
+
+* Edit the admin user and set is_admin to yes on edit form and save -- this will enable switching between user and admin roles for admin from profile menu:
+
+![Screenshot from 2024-02-24 20-17-47](https://github.com/aliaxonbaig/quizapp/assets/52659978/3279ca12-a1c7-443a-9372-c7849cc8e516)
+
+
+
+![Screenshot from 2024-02-24 20-18-36](https://github.com/aliaxonbaig/quizapp/assets/52659978/6a5115de-61ef-4fb3-bcd2-fc4dfdd68251)
 
 #Create a test user from admin and assign user role
 #Login as test user and i) Subscribe to the certification under subscription menu and then the subscribed quiz certificaitons will appear in the quiz drop down for selection.
