@@ -61,9 +61,19 @@ Admin Dashboard
 
 ![Screenshot from 2024-02-24 19-02-12](https://github.com/aliaxonbaig/quizapp/assets/52659978/476ccdcb-488d-4356-ad3b-b4adb3e80252)
 
+Sections Administration:
+![Screenshot from 2024-02-24 19-03-07](https://github.com/aliaxonbaig/quizapp/assets/52659978/37fcdc7e-19d5-4912-a91b-ac990d0b79f4)
+
 
 User Dashboard:
 ![Screenshot from 2024-02-24 19-07-25](https://github.com/aliaxonbaig/quizapp/assets/52659978/b30abd3d-fe8f-4062-929f-77f3b3cefcb5)
+
+
+
+Subscription Page: #This could be bootstraped with some subscription for enabling payment and premium services for members with some additional improvements:
+![Screenshot from 2024-02-24 20-21-31](https://github.com/aliaxonbaig/quizapp/assets/52659978/a8cacb15-9f6f-484d-a578-b383cf6f49f3)
+
+Quiz Selection:
 
 
 Quiz In-Progress:
@@ -76,10 +86,6 @@ Quiz Result Review:
 Quiz Overview Page:
 ![Screenshot from 2024-02-24 19-07-37](https://github.com/aliaxonbaig/quizapp/assets/52659978/47aabf4e-6808-43eb-83d9-f0c60966ae0a)
 
-
-
-Subscription Page: #This could be bootstraped with some subscription for enabling payment and premium services for members with some additional improvements:
-![Screenshot from 2024-02-24 20-21-31](https://github.com/aliaxonbaig/quizapp/assets/52659978/a8cacb15-9f6f-484d-a578-b383cf6f49f3)
 
 
 
