@@ -10,6 +10,7 @@ git clone <repo>
 
 
 cp .env.example .env
+
 composer install
 
 sail up -d
