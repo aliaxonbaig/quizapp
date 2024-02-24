@@ -13,7 +13,7 @@ git clone <repo>
 
 
 ## Execute initial setup and seeding.
-
+```
 cp .env.example .env
 
 composer install
@@ -36,6 +36,8 @@ sail artisan db:seed --class ShieldSeeder
 
 
 sail npm run dev #should be kept open if using local dev env
+```
+
 
 # Loing to admin:
 
