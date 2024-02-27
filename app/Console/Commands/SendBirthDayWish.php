@@ -27,8 +27,9 @@ class SendBirthDayWish extends Command
      */
     public function handle()
     {
-        //$users = User::whereMonth('dob', '=', date('m'))->whereDay('dob', '=', date('d'))->get();
-        $users = User::all();
+        //Get users with birthday today.
+
+        $users = User::whereMonth('dob', '=', date('m'))->whereDay('dob', '=', date('d'))->get();
         foreach ($users as $user){
             $user->notify(new BirthDayWish($user));
         }
