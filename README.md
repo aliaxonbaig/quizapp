@@ -1,18 +1,16 @@
 
 ### About QuizApp
 
-A fully functional quiz application developed on TALL stack and filamentphp3. The development was part of my self learning to understand web application secure design principles. 
+A fully functional quiz application developed on TALL stack and filamentphp3. The development was part of my self-learning to understand web application secure design principles.
 
+I enhanced my knowledge related to overall application security, identification, authentication, authorization, audit and session management best practices and principles.
 
-I enhanced my knowledge related to overall applicaiton security, identification, authenticaion, authorization, audit and session mangement best practices and principles.
+I explored the importance of input sanitization and validation best practices, and the built-in functionality TALL stack provides to implement these foundational security controls.
 
+An interesting part was encryption of fields, files and sessions with keys that Laravel provides.
 
-I explored the importance of input sanatization and validation best practices and the buildin functionality TALL stack provides to implement these roudational security controls. 
+This project gave me a deep understanding of what to look for in web applications during design, implementation and maintenance.
 
-
-An interesting part was encrpytion of fields, files and sessions with keys that laravel provides. 
-
-This project gave me a deep understanding of what to look for in webapplicaitons during desing, implementation and maintanance. 
 
 
 ### Setup
