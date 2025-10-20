@@ -19,6 +19,10 @@ class MyQuizzesResource extends Resource
     protected static ?string $model = MyQuizzes::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-trophy';
+    
+    protected static ?string $navigationLabel = 'My Quiz History';
+    
+    protected static ?string $pluralModelLabel = 'My Quiz History';
 
     public static function getNavigationBadge(): ?string
     {
@@ -38,7 +42,7 @@ class MyQuizzesResource extends Resource
             ]);
     }
 
-    protected static ?string $title = 'My Quizzies';
+    protected static ?string $title = 'My Quiz History';
 
     public static function getEloquentQuery(): Builder
     {
@@ -53,7 +57,13 @@ class MyQuizzesResource extends Resource
     {
         return $table
             ->columns([
+            Tables\Columns\TextColumn::make('name')
+                ->label('Test Name')
+                ->searchable()
+                ->placeholder('Practice Quiz')
+                ->alignment(Alignment::Start),
             Tables\Columns\TextColumn::make('certification.name')
+                ->label('Major')
                 ->numeric()
                 ->sortable()
                 ->alignment(Alignment::Start),
@@ -113,6 +123,9 @@ class MyQuizzesResource extends Resource
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
             ])
+            ->emptyStateHeading('No Quiz History Yet')
+            ->emptyStateDescription('Start taking quizzes to see your results here!')
+            ->emptyStateIcon('heroicon-o-trophy')
             ->defaultSort('updated_at', 'desc');
     }
 

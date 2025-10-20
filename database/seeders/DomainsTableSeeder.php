@@ -1,7 +1,7 @@
 <?php
 
 namespace Database\Seeders;
-
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Seeder;
 
 class DomainsTableSeeder extends Seeder
@@ -16,10 +16,10 @@ class DomainsTableSeeder extends Seeder
     {
         
 
-        \DB::table('domains')->delete();
-        
-        \DB::table('domains')->insert(array (
-            0 => 
+        DB::table('domains')->delete();
+
+        DB::table('domains')->insert(array (
+            0 =>
             array (
                 'id' => 1,
                 'name' => 'Information and Risk Management',

@@ -19,8 +19,14 @@ class SectionResource extends Resource
     protected static ?string $model = Section::class;
 
     protected static ?string $navigationIcon = 'heroicon-m-rectangle-stack';
+    
+    protected static ?string $navigationLabel = 'Semesters';
+    
+    protected static ?string $modelLabel = 'Semester';
+    
+    protected static ?string $pluralModelLabel = 'Semesters';
 
-    protected static ?string $navigationGroup = 'Quiz Management';
+    protected static ?string $navigationGroup = 'Academic Management';
 
     protected static ?int $navigationSort = 0;
 

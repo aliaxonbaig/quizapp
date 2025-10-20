@@ -35,17 +35,18 @@ class AdminPanelProvider extends PanelProvider
             ->path('admin')
             ->login(Login::class)
             ->colors([
-                'primary' => '#002C6A',
+                'primary' => Color::hex('#007241'),
+                'warning' => Color::hex('#f9c432'),
             ])
             ->profile()
             ->userMenuItems([
                 MenuItem::make()
-                ->label('Member')
-                ->icon('heroicon-o-cog-6-tooth')
+                ->label('Switch to Member Panel')
+                ->icon('heroicon-o-arrow-right-circle')
                 ->url('/member')
+                ->visible(fn(): bool => auth()->check() && auth()->user()->hasAnyRole(['teacher', 'student']))
             ])
             ->sidebarCollapsibleOnDesktop()
-            ->emailVerification()
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
             ->pages([
@@ -67,6 +68,7 @@ class AdminPanelProvider extends PanelProvider
                 SubstituteBindings::class,
                 DisableBladeIconComponents::class,
                 DispatchServingFilamentEvent::class,
+                \App\Http\Middleware\RedirectBasedOnRole::class,
             ])
             ->plugins([
                 FilamentShieldPlugin::make(),

@@ -33,7 +33,7 @@ class UserObserver
         if($this->admins->isNotEmpty())
         {
             foreach ($this->admins as $admin){
-                $admin->notify(new UserCreated($user, $admin));
+                // $admin->notify(new UserCreated($user, $admin)); // Disabled - no mail server
 
                 Notification::make()
                 ->success()
@@ -71,7 +71,7 @@ class UserObserver
                               ->get();
 
         foreach ($this->admins as $admin){
-            $admin->notify(new UserDeleted($user, $admin));
+            // $admin->notify(new UserDeleted($user, $admin)); // Disabled - no mail server
 
             Notification::make()
             ->success()

@@ -1,9 +1,8 @@
 <?php
-
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-
+use Illuminate\Support\Facades\DB;
 class SectionsTableSeeder extends Seeder
 {
 
@@ -14,12 +13,11 @@ class SectionsTableSeeder extends Seeder
      */
     public function run()
     {
-        
 
-        \DB::table('sections')->delete();
-        
-        \DB::table('sections')->insert(array (
-            0 => 
+        DB::table('sections')->delete();
+
+        DB::table('sections')->insert(array (
+            0 =>
             array (
                 'id' => 1,
                 'name' => 'Information Technology',

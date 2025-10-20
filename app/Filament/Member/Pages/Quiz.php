@@ -12,7 +12,9 @@ class Quiz extends Page
     use HasPageShield;
     protected static ?string $navigationIcon = 'heroicon-o-cursor-arrow-rays';
 
-    protected static ?string $title = 'New Quiz';
+    protected static ?string $navigationLabel = 'Take Quiz';
+    
+    protected static ?string $title = 'Take Quiz';
 
     protected static string $view = 'filament.member.pages.quiz';
 

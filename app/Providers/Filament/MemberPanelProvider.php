@@ -21,7 +21,6 @@ use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use App\Livewire\RandomQuoteWidget;
 use Filament\Navigation\MenuItem;
-use Illuminate\Support\Facades\Auth;
 use Jeffgreco13\FilamentBreezy\BreezyCore;
 
 class MemberPanelProvider extends PanelProvider
@@ -38,13 +37,14 @@ class MemberPanelProvider extends PanelProvider
             ->sidebarCollapsibleOnDesktop()
             ->userMenuItems([
                 MenuItem::make()
-                ->label('Admin')
-                ->icon('heroicon-o-cog-6-tooth')
+                ->label('Switch to Admin Panel')
+                ->icon('heroicon-o-arrow-right-circle')
                 ->url('/admin')
-                ->hidden(fn(): bool => ! Auth::user()->is_admin)
+                ->visible(fn(): bool => auth()->check() && auth()->user()->hasRole('teacher'))
             ])
             ->colors([
-                'primary' => Color::Blue,
+                'primary' => Color::hex('#007241'),
+                'warning' => Color::hex('#f9c432'),
             ])
             ->breadcrumbs(false)
             ->maxContentWidth('full')
@@ -54,7 +54,6 @@ class MemberPanelProvider extends PanelProvider
             ->pages([
                 Pages\Dashboard::class,
             ])
-            ->emailVerification()
             ->discoverWidgets(in: app_path('Filament/Member/Widgets'), for: 'App\\Filament\\Member\\Widgets')
             ->widgets([
                 Widgets\AccountWidget::class,
@@ -70,6 +69,7 @@ class MemberPanelProvider extends PanelProvider
                 SubstituteBindings::class,
                 DisableBladeIconComponents::class,
                 DispatchServingFilamentEvent::class,
+                \App\Http\Middleware\RedirectBasedOnRole::class,
             ])
             ->plugins([
                 BreezyCore::make()

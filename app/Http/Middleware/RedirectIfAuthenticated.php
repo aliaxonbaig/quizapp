@@ -12,6 +12,7 @@ class RedirectIfAuthenticated
 {
     /**
      * Handle an incoming request.
+     * Redirects already authenticated users to their appropriate panel.
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
@@ -21,6 +22,18 @@ class RedirectIfAuthenticated
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
+                $user = Auth::guard($guard)->user();
+                
+                // Redirect to appropriate panel based on role
+                if ($user->hasRole('teacher')) {
+                    // Teachers default to admin panel
+                    return redirect('/admin');
+                } elseif ($user->hasRole('student')) {
+                    // Students go to member panel
+                    return redirect('/member');
+                }
+                
+                // Fallback to default home route
                 return redirect(RouteServiceProvider::HOME);
             }
         }

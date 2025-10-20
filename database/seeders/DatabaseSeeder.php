@@ -19,11 +19,13 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        $this->call(QuoteSeeder::class);
+        //$this->call(QuoteSeeder::class);
+        //$user = \App\Models\User::factory()->create();
         $this->call(SectionsTableSeeder::class);
         $this->call(CertificationsTableSeeder::class);
         $this->call(DomainsTableSeeder::class);
         $this->call(QuestionsSeeder::class);
+        $this->call(QuizHeadersSeeder::class); // Add mock quizzes
 
         }
 }

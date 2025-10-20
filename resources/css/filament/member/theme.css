@@ -2,3 +2,40 @@
 
 @config './tailwind.config.js';
 
+/* Fix dark mode text visibility */
+@layer base {
+    /* Ensure all text is visible in dark mode */
+    .dark {
+        color-scheme: dark;
+    }
+    
+    /* Question and content text in dark mode */
+    .dark .fi-section-content,
+    .dark .fi-section-content-ctn,
+    .dark .fi-ta-text,
+    .dark .fi-modal-content,
+    .dark .fi-fo-field-wrp-label,
+    .dark .fi-ta-text-item,
+    .dark .fi-table-cell,
+    .dark .fi-table-cell-content,
+    .dark p:not([class*="text-"]),
+    .dark span:not([class*="text-"]),
+    .dark div:not([class*="text-"]) {
+        color: rgb(209 213 219) !important; /* gray-300 */
+    }
+    
+    /* Headings */
+    .dark h1,
+    .dark h2,
+    .dark h3,
+    .dark h4,
+    .dark h5,
+    .dark h6 {
+        color: rgb(243 244 246) !important; /* gray-100 */
+    }
+    
+    /* Labels */
+    .dark label {
+        color: rgb(229 231 235) !important; /* gray-200 */
+    }
+}

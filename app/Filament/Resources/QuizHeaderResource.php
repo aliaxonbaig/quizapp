@@ -15,6 +15,12 @@ class QuizHeaderResource extends Resource
     protected static ?string $model = QuizHeader::class;
 
     protected static ?string $navigationIcon = 'heroicon-s-rocket-launch';
+    
+    protected static ?string $navigationLabel = 'All Quizzes';
+    
+    protected static ?string $modelLabel = 'Quiz';
+    
+    protected static ?string $pluralModelLabel = 'All Quizzes';
 
     protected static ?string $navigationGroup = 'Quiz Management';
 

@@ -1,7 +1,7 @@
 <?php
 
 namespace Database\Seeders;
-
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Seeder;
 
 class CertificationsTableSeeder extends Seeder
@@ -14,12 +14,11 @@ class CertificationsTableSeeder extends Seeder
      */
     public function run()
     {
-        
 
-        \DB::table('certifications')->delete();
-        
-        \DB::table('certifications')->insert(array (
-            0 => 
+        DB::table('certifications')->delete();
+
+        DB::table('certifications')->insert(array (
+            0 =>
             array (
                 'id' => 1,
                 'name' => 'CISSP',

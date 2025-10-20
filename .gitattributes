@@ -1,5 +1,10 @@
+# normalize text files and force common source files to LF
 * text=auto
-*.css linguist-vendored
-*.scss linguist-vendored
-*.js linguist-vendored
-CHANGELOG.md export-ignore
+*.php text eol=lf
+*.js  text eol=lf
+*.css text eol=lf
+*.blade.php text eol=lf
+
+# treat IDE/workspace history as binary so Git won't try to change EOLs
+.vs/** binary
+.history/** binary

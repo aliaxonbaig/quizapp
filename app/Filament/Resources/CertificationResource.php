@@ -19,8 +19,14 @@ class CertificationResource extends Resource
     protected static ?string $model = Certification::class;
 
     protected static ?string $navigationIcon = 'heroicon-s-academic-cap';
+    
+    protected static ?string $navigationLabel = 'Majors';
+    
+    protected static ?string $modelLabel = 'Major';
+    
+    protected static ?string $pluralModelLabel = 'Majors';
 
-    protected static ?string $navigationGroup = 'Quiz Management';
+    protected static ?string $navigationGroup = 'Academic Management';
 
     protected static ?int $navigationSort = 1;
 

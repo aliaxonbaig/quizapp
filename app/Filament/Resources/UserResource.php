@@ -19,8 +19,14 @@ class UserResource extends Resource
     protected static ?string $model = User::class;
 
     protected static ?string $navigationIcon = 'heroicon-s-user-group';
+    
+    protected static ?string $navigationLabel = 'Users (Teachers & Students)';
+    
+    protected static ?string $modelLabel = 'User';
+    
+    protected static ?string $pluralModelLabel = 'Users';
 
-    protected static ?string $navigationGroup = 'Site Management';
+    protected static ?string $navigationGroup = 'User Management';
 
     protected static ?int $navigationSort = 1;
 
@@ -53,6 +59,21 @@ class UserResource extends Resource
                     ->multiple()
                     ->preload()
                     ->searchable(),
+                    
+                Forms\Components\Section::make('Student Major Subscriptions')
+                    ->schema([
+                        Forms\Components\Select::make('certifications')
+                            ->label('Assign Majors to Student')
+                            ->relationship('certifications_owned', 'name')
+                            ->multiple()
+                            ->preload()
+                            ->searchable()
+                            ->helperText('Assign majors (certifications) to this student. They will have access to all quizzes in these majors.')
+                            ->columnSpanFull(),
+                    ])
+                    ->description('Manage which majors this student can access')
+                    ->collapsible()
+                    ->visible(fn ($record) => $record && $record->hasRole('student')),
 
                 // Forms\Components\Section::make('Roles')->schema([
                 //     Forms\Components\CheckboxList::make('roles')->relationship('roles','name'),
@@ -65,12 +86,30 @@ class UserResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
-                    ->searchable(),
+                    ->searchable()
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('email')
-                    ->searchable(),
+                    ->searchable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('roles.name')
+                    ->label('Role')
+                    ->badge()
+                    ->colors([
+                        'success' => 'teacher',
+                        'primary' => 'student',
+                    ]),
+                Tables\Columns\TextColumn::make('certifications_owned.name')
+                    ->label('Majors')
+                    ->badge()
+                    ->color('warning')
+                    ->limit(2)
+                    ->tooltip(fn ($record) => $record->certifications_owned->pluck('name')->join(', '))
+                    ->toggleable(),
                 Tables\Columns\IconColumn::make('is_admin')
-                    ->boolean(),
+                    ->boolean()
+                    ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\IconColumn::make('is_active')
+                    ->label('Active')
                     ->boolean(),
                 Tables\Columns\TextColumn::make('email_verified_at')
                     ->dateTime()
@@ -90,12 +129,21 @@ class UserResource extends Resource
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
+                Tables\Filters\SelectFilter::make('role')
+                    ->label('Filter by Role')
+                    ->relationship('roles', 'name')
+                    ->preload(),
                 Tables\Filters\SelectFilter::make('is_active')
-                ->label('User Active ?')
-                ->options([
-                    true => 'Yes',
-                    false => 'No',
-                ]),
+                    ->label('User Active ?')
+                    ->options([
+                        true => 'Yes',
+                        false => 'No',
+                    ]),
+                Tables\Filters\Filter::make('has_subscriptions')
+                    ->label('Has Major Subscriptions')
+                    ->query(fn (Builder $query) => 
+                        $query->has('certifications_owned')
+                    ),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),

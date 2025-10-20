@@ -17,6 +17,15 @@ use Jeffgreco13\FilamentBreezy\Traits\TwoFactorAuthenticatable;
 use Filament\Models\Contracts\HasName;
 use Illuminate\Support\Facades\Storage;
 
+/**
+ * @method bool hasRole(string|array $roles, string $guard = null)
+ * @method bool hasAnyRole(string|array $roles, string $guard = null)
+ * @method bool hasAllRoles(string|array $roles, string $guard = null)
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Permission\Models\Role[] $roles
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Permission\Models\Permission[] $permissions
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Certification[] $certifications_owned
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Section[] $sections_owned
+ */
 class User extends Authenticatable implements FilamentUser, HasAvatar
 {
     use HasApiTokens, HasFactory, Notifiable, HasRoles, TwoFactorAuthenticatable;
@@ -59,16 +68,13 @@ class User extends Authenticatable implements FilamentUser, HasAvatar
     public function canAccessPanel(Panel $panel): bool
     {
         $panelGetId = $panel->getId();
+        
+        /** @var User $user */
+        $user = auth()->user();
 
         return match($panelGetId) {
-            'admin' => (auth()->user()->hasRole(['super_admin']) &&
-                        // auth()->user()->email == 'youradminemail@somemail.com'  &&
-                        // auth()->user()->is_admin &&
-                        auth()->user()->is_active
-                    ),
-            'member' => (auth()->user()->hasAnyRole(['super_admin|user']) &&
-                         auth()->user()->is_active
-                        ),
+            'admin' => ($user->hasRole('teacher') && $user->is_active),
+            'member' => ($user->hasAnyRole(['teacher', 'student']) && $user->is_active),
         };
 
     }
@@ -104,6 +110,6 @@ class User extends Authenticatable implements FilamentUser, HasAvatar
     }
 
     public function certifications_owned(): BelongsToMany {
-        return $this->belongsToMany(Certification::class);
+        return $this->belongsToMany(Certification::class, 'certification_user', 'user_id', 'certification_id');
     }
 }
